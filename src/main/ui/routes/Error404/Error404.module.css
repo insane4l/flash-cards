@@ -1,0 +1,48 @@
+/* todo: remove vw vh, add wrapper, position center etc... */
+.page__wrapper {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+
+.astronaut_img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    max-width: 650px;
+    max-height: 650px;
+}
+
+.callout__text_wrapper {
+    position: absolute;
+    top: -100px;
+    left: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 600px;
+    height: 330px;
+    padding: 70px 60px 90px 150px;
+    background: url(../../../../assets/images/callout404.png) center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    user-select: none;
+}
+
+.callout__text_wrapper span {
+    padding: 25px;
+}
+
+.custom_text {
+    font-size: 40px;
+    font-weight: 600;
+    color: #444;
+}
+
+.error_text {
+    font-size: 50px;
+    font-weight: 900;
+    color: rgba(0, 235, 235, 1);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 1);
+}
