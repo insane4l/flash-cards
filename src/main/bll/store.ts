@@ -3,16 +3,21 @@ import {TypedUseSelectorHook, useDispatch, useSelector} from 'react-redux'
 import thunkMiddleware, {ThunkAction, ThunkDispatch} from 'redux-thunk'
 
 import appReducer, { AppActionsTypes } from "./reducers/appReducer"
-import { LoginActionsTypes } from './reducers/loginReducer'
-import { CardsActionsTypes } from './reducers/cardsReducer'
-import { NewPasswordActionsTypes } from './reducers/newPasswordReducer'
-import { PasswordRecoveryActionsTypes } from './reducers/passwordRecoveryReducer'
-import { ProfileActionsTypes } from './reducers/profileReducer'
-import { RegistrationActionsTypes } from './reducers/registrationReducer'
+import loginReducer, { LoginActionsTypes } from './reducers/loginReducer'
+import cardsReducer, { CardsActionsTypes } from './reducers/cardsReducer'
+import newPasswordReducer, { NewPasswordActionsTypes } from './reducers/newPasswordReducer'
+import passwordRecoveryReducer, { PasswordRecoveryActionsTypes } from './reducers/passwordRecoveryReducer'
+import profileReducer, { ProfileActionsTypes } from './reducers/profileReducer'
+import registrationReducer, { RegistrationActionsTypes } from './reducers/registrationReducer'
 
 const rootReducer = combineReducers({
     app: appReducer,
-
+    login: loginReducer,
+    registration: registrationReducer,
+    newPassword: newPasswordReducer,
+    passwordRecovery: passwordRecoveryReducer,
+    profile: profileReducer,
+    cards: cardsReducer,
 })
 
 const store = createStore(rootReducer, applyMiddleware(thunkMiddleware))

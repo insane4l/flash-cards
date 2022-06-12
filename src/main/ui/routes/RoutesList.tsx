@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route, Routes } from 'react-router-dom'
+import { Link, Navigate, Route, Routes } from 'react-router-dom'
 import Login from '../../../features/auth/Login/Login'
 import NewPassword from '../../../features/auth/NewPassword/NewPassword'
 import PasswordRecovery from '../../../features/auth/PasswordRecovery/PasswordRecovery'
@@ -33,9 +33,15 @@ const RoutesList = () => {
 
 	return (
 		<Routes>
+			<Route path="/" element={<Navigate to={PATH.profile} />} />
+
 			{mappedRoutes}
 
-			<Route path='*' element={<Error404 customText='Houston we have a problem! We are lost!' />} />
+			<Route path='*' element={
+				<Error404 
+					customText='Houston we have a problem! We are lost!'
+					backLink={<Link to="/">{"< go back home"}</Link>} />
+			} />
 		</Routes>
 	)
 }

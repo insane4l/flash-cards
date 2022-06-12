@@ -5,7 +5,7 @@ import RoutesList from './routes/RoutesList';
 
 function App() {
 
-	const appStyle = {marginTop: '40px'} // todo: remove (temporary style for fixed header)
+	const appStyle = {paddingTop: '40px'} // todo: remove (temporary style for fixed header)
 
 	return (
 		<div style={appStyle} className="App">
