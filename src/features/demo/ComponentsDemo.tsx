@@ -1,10 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
+import ModalWindow from '../../main/ui/common/ModalWindow/ModalWindow'
 import SuperButton from '../../main/ui/common/SuperButton/SuperButton'
 import SuperCheckbox from '../../main/ui/common/SuperCheckbox/SuperCheckbox'
 import SuperInputText from '../../main/ui/common/SuperInputText/SuperInputText'
 import s from './ComponentsDemo.module.css'
 
 const ComponentsDemo = () => {
+
+    const [isModalOpen, setModalDisplay] = useState(false)
+    const openModal = () => setModalDisplay(true)
+    const closeModal = () => setModalDisplay(false)
+
+
     return (
         <div>
             <div className={s.section}>
@@ -31,6 +38,7 @@ const ComponentsDemo = () => {
                     <SuperButton btnSize="medium">Medium</SuperButton>
                     <SuperButton btnSize="small">Small</SuperButton>
                     <SuperButton upperCase>Uppercase</SuperButton>
+                    <SuperButton rounded>Rounded</SuperButton>
                 </div>
 
             </div>
@@ -48,6 +56,22 @@ const ComponentsDemo = () => {
                 <SuperCheckbox checked={true}>Checked</SuperCheckbox>
 
             </div>
+
+            <div className={s.section}>
+                <h2>{"<ModalWindow/>"}</h2>
+
+                <SuperButton btnStyle="primary" upperCase btnSize="large" onClick={openModal}>
+                    Open modal
+                </SuperButton>
+
+                <ModalWindow title="Modal window title" onOverlayClose={false} open={isModalOpen} onClose={closeModal}>
+                    <div>These are children components</div>
+                </ModalWindow>
+
+            </div>
+
+
+            
         </div>
     )
 }
