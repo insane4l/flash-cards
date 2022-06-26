@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import EditableTextLine from '../../main/ui/common/EditableTextLine/EditableTextLine'
 import ModalWindow from '../../main/ui/common/ModalWindow/ModalWindow'
 import SuperButton from '../../main/ui/common/SuperButton/SuperButton'
 import SuperCheckbox from '../../main/ui/common/SuperCheckbox/SuperCheckbox'
@@ -10,6 +11,8 @@ const ComponentsDemo = () => {
     const [isModalOpen, setModalDisplay] = useState(false)
     const openModal = () => setModalDisplay(true)
     const closeModal = () => setModalDisplay(false)
+
+    const [textLineValue, setTextLineValue] = useState('Editable text line')
 
 
     return (
@@ -68,6 +71,12 @@ const ComponentsDemo = () => {
                     <div>These are children components</div>
                 </ModalWindow>
 
+            </div>
+
+            <div className={s.section}>
+                <h2>{"<EditableTextLine/>"}</h2>
+
+                <EditableTextLine text={textLineValue} setNewText={setTextLineValue}/>
             </div>
 
 
