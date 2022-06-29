@@ -36,15 +36,18 @@ export const profileActions = {
     getUserInfo: (profile:ProfileStateType) => (
         {type: 'profile/GET-USER-INFO',profile} as const
     ),
+    updateUserInfo: (profile:ProfileStateType) => (
+        {type: 'profile/UPDATE-USER-INFO',profile} as const
+    ),
 }
 
 //thunks
- export const updateUserInfoTC = (): BaseThunkType<ProfileActionsTypes> => async (dispatch) => {
+ export const updateUserInfoTC = (name:string, avatar:string): BaseThunkType<ProfileActionsTypes> => async (dispatch) => {
 
-     profileAPI.me()
+     profileAPI.updateUserInfo(name, avatar)
          .then(res => {
              if (res) {
-                 dispatch(profileActions.getUserInfo(res))
+                 dispatch(profileActions.updateUserInfo(res.updatedUser))
 
              } else {
                  console.log('Some error')

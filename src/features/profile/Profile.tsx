@@ -5,6 +5,7 @@ import {Navigate} from "react-router-dom";
 import {PATH} from "../../main/ui/routes/RoutesList";
 import SuperInputText from "../../main/ui/common/SuperInputText/SuperInputText";
 import style from '../profile/Profile.module.css'
+import {updateUserInfoTC} from "../../main/bll/reducers/profileReducer";
 
 const Profile = () => {
 
@@ -15,7 +16,7 @@ const Profile = () => {
     const email = useAppSelector(state => state.login.email)
     const isLoggedIn = useAppSelector(state => state.login._id)
 
-
+const save=()=>{dispatch(updateUserInfoTC('fdfd',''))}
 
 
 
@@ -29,7 +30,7 @@ const Profile = () => {
                     : <img src={avatar} style={{width: '50px', height: '50px', borderRadius: '50%'}}/>}
             </div>
 
-
+<button onClick={save}>Save</button>
             <SuperInputText value={name} />
             <SuperInputText value={email}/>
 
