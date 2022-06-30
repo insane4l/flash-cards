@@ -21,11 +21,7 @@ const initialState = {
 
 const profileReducer = (state: ProfileStateType = initialState, action: ProfileActionsTypes): ProfileStateType => {
     switch(action.type) {
-       /*  case 'profile/GET-USER-INFO':
-             return {
-                 ...state, ...action.profile
-                
-            }*/
+
         case "profile/UPDATE-USER-INFO":
             return {
                 ...state, ...action.profile
@@ -39,9 +35,7 @@ const profileReducer = (state: ProfileStateType = initialState, action: ProfileA
 
 //actions
 export const profileActions = {
-  /*  getUserInfo: (profile:ProfileStateType) => (
-        {type: 'profile/GET-USER-INFO',profile} as const
-    ),*/
+
     updateUserInfo: (profile:ProfileStateType) => (
         {type: 'profile/UPDATE-USER-INFO',profile} as const
     ),
@@ -67,16 +61,6 @@ export const profileActions = {
              dispatch(error)
          })
  }
-/*export const getUserInfoTC = (): BaseThunkType<ProfileActionsTypes> => async (dispatch) => {
-
-        profileAPI.me()
-            .then(res=>{
-                if(res){
-                    dispatch(profileActions.getUserInfo(res.data))
-                }
-            })
-}*/
-
 
 export default profileReducer
 
