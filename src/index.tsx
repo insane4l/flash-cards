@@ -4,6 +4,8 @@ import './index.css';
 import App from './main/ui/App';
 import reportWebVitals from './reportWebVitals';
 import { HashRouter } from 'react-router-dom';
+import {Provider} from "react-redux";
+import store from "./main/bll/store";
 
 const root = ReactDOM.createRoot(
 	document.getElementById('root') as HTMLElement
@@ -11,9 +13,11 @@ const root = ReactDOM.createRoot(
 
 root.render(
 	<React.StrictMode>
+		<Provider store={store}>
 		<HashRouter>
 			<App />
 		</HashRouter>
+		</Provider>
 	</React.StrictMode>
 );
 
