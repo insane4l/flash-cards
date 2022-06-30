@@ -1,0 +1,13 @@
+.inputLabel {
+    display: flex;
+    opacity: .5;
+}
+
+.input {
+    border: 1px solid #1f701a;
+}   
+
+.submitBtn {
+    padding: 10px 40px;
+    font-size: 18px;
+}

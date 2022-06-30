@@ -28,7 +28,7 @@ const ComponentsDemo = () => {
     return (
         <div>
 
-            {commonComponents.map((el) => <DemoSectionTemplate title={el.name}>{el.component}</DemoSectionTemplate>)}
+            {commonComponents.map((el) => <DemoSectionTemplate key={el.name} title={el.name}>{el.component}</DemoSectionTemplate>)}
 
         </div>
     )

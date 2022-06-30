@@ -1,12 +1,11 @@
-import axios from "axios";
+import { apiBase } from "./apiBase"
 
-export const instance = axios.create({
-    // baseURL: 'https://neko-back.herokuapp.com/2.0/',
-    baseURL: process.env.REACT_APP_BACK_URL || 'http://localhost:7542/2.0/',
-    withCredentials: true,
-})
 
 export const authAPI = {
+    register(email: string, password: string) {
+        return apiBase.post<RegisterSuccessResponseType & RegisterFailureResponseType>(
+            'auth/register', {email, password}).then(res => res.data)
+    },
     login(email: string, password: string, rememberMe: boolean = false) {
         return instance.post(`auth/login`, {email,password,rememberMe})
             .then(res => res.data)
@@ -14,9 +13,32 @@ export const authAPI = {
 }
 
 
+
+type RegisterSuccessResponseType = {addedUser: UserType}
+
 //types
 export type LoginParamsType = {
     email: string,
     password: string,
-    rememberMe: boolean,
+    rememberMe: boolean,}
+type RegisterFailureResponseType = {
+    error: string
+    in: string
+    isEmailValid: boolean
+    isPassValid: boolean
+    emailRegExp: {}
+    passwordRegExp: string
+}
+
+type UserType = {
+    _id: string
+    email: string
+    rememberMe: boolean
+    isAdmin: boolean
+    name: string
+    verified: boolean
+    publicCardPacksCount: number
+    created: string
+    updated: string
+    __v: number
 }
