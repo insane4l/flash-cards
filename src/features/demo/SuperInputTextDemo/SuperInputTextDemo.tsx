@@ -7,8 +7,8 @@ const SuperInputTextDemo = () => {
 
     return (
         <>
-            <SuperInputText value={value} onChangeText={setValue}  placeholder="Basic" />
-            <SuperInputText value={value} onChangeText={setValue} error="Some error message" placeholder="With error" />
+            <SuperInputText value={value} onChangeText={setValue} label="Basic" />
+            <SuperInputText value={value} onChangeText={setValue} error="Some error message" label="Input with error" />
         </>
     )
 }
