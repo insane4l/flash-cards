@@ -35,7 +35,7 @@ const RegistrationFrom = () => {
 		},
 
 		onSubmit: values => {
-			dispatch( registerUserTC(values.email, values.password) )
+			dispatch(registerUserTC(values.email, values.password))
 
 			formik.resetForm()
 		},
@@ -46,31 +46,28 @@ const RegistrationFrom = () => {
 	const password2Error = (formik.errors.password2 && formik.touched.password2) ? formik.errors.password2 : ''
 
 	return (
-		<form onSubmit={formik.handleSubmit}>
-			<span className={s.inputLabel}>Email</span>
-				<SuperInputText
-					className={s.input}
-					type="email"
-					error={emailError}
-					{...formik.getFieldProps('email')}
-				/>
+		<form className={s.regForm} onSubmit={formik.handleSubmit}>
 
+			<SuperInputText
+				type='email'
+				label='Email'
+				error={emailError}
+				{...formik.getFieldProps('email')} />
 
-			<span className={s.inputLabel}>Password</span>
-			<SuperInputText className={s.input}
+			<SuperInputText 
 				type='password'
+				label='Password'
 				error={passwordError}
 				{...formik.getFieldProps('password')} />
 
+			<SuperInputText
+				type='password'
+				label='Confirm password'
+				error={password2Error}
+				{...formik.getFieldProps('password2')} />
 
-			<span className={s.inputLabel}>Confirm password</span>
-				<SuperInputText className={s.input}
-					type='password'
-					error={password2Error}
-					{...formik.getFieldProps('password2')} />
 
-
-			<SuperButton type={'submit'} className={s.submitBtn}>
+			<SuperButton type='submit' btnStyle='primary' className={s.submitBtn}>
 				Register
 			</SuperButton>
 		</form>

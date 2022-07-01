@@ -7,7 +7,7 @@ export const authAPI = {
             'auth/register', {email, password}).then(res => res.data)
     },
     login(email: string, password: string, rememberMe: boolean = false) {
-        return instance.post(`auth/login`, {email,password,rememberMe})
+        return apiBase.post(`auth/login`, {email,password,rememberMe})
             .then(res => res.data)
     }
 }

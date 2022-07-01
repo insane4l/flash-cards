@@ -1,13 +1,10 @@
-.inputLabel {
-    display: flex;
-    opacity: .5;
+.regForm > *{
+    margin-bottom: 6px;
 }
 
-.input {
-    border: 1px solid #1f701a;
-}   
-
 .submitBtn {
+    display: block;
+    margin: 0 auto;
     padding: 10px 40px;
     font-size: 18px;
 }
