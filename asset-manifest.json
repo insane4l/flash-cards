@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/flash-cards/static/css/main.9b55647e.css",
-    "main.js": "/flash-cards/static/js/main.9da1ed32.js",
+    "main.js": "/flash-cards/static/js/main.d9e78942.js",
     "static/js/787.28035159.chunk.js": "/flash-cards/static/js/787.28035159.chunk.js",
     "static/media/callout404.png": "/flash-cards/static/media/callout404.28043e3c62d095079cdd.png",
     "static/media/astronaut404.png": "/flash-cards/static/media/astronaut404.2760983ea0614a474854.png",
@@ -10,11 +10,11 @@
     "static/media/paginator-right-arrow.svg": "/flash-cards/static/media/paginator-right-arrow.47390740f371bb447d8bb5232c7e9831.svg",
     "index.html": "/flash-cards/index.html",
     "main.9b55647e.css.map": "/flash-cards/static/css/main.9b55647e.css.map",
-    "main.9da1ed32.js.map": "/flash-cards/static/js/main.9da1ed32.js.map",
+    "main.d9e78942.js.map": "/flash-cards/static/js/main.d9e78942.js.map",
     "787.28035159.chunk.js.map": "/flash-cards/static/js/787.28035159.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.9b55647e.css",
-    "static/js/main.9da1ed32.js"
+    "static/js/main.d9e78942.js"
   ]
 }
