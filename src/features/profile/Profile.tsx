@@ -19,12 +19,12 @@ const Profile = () => {
     let name = useAppSelector(state => state.profile.userData.name)
     const avatar = useAppSelector(state => state.profile.userData.avatar)
     const email = useAppSelector(state => state.profile.userData.email)
-    const isLoggedIn = useAppSelector(state => state.login._id)
+    const isLoggedIn = useAppSelector(state => state.login.isLoggedIn)
     const isLoading = useAppSelector(state => state.profile.loading)
 
 
     const [value, setValue] = useState<string>(name)
-    const [newFoto, setNewFoto] = useState<string>(avatar)
+    const [newFoto, setNewFoto] = useState<any>(avatar)
     const [error, setError] = useState<string | null>(null)
 
 

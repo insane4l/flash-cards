@@ -12,7 +12,9 @@ export const authAPI = {
         return apiBase.post(`auth/login`, {email,password,rememberMe})
             .then(res => res.data)
     },
-
+    logout() {
+        return apiBase.delete('auth/me').then(res => res.data)
+    },
     authMe() {
         return apiBase.post<AuthMeResponseType>(`auth/me`,{}).then(res => res.data)
     },
