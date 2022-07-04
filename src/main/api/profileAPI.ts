@@ -1,23 +1,27 @@
-
+import axios from "axios";
 import {ProfileStateType} from "../bll/reducers/profileReducer";
-import { apiBase } from "./apiBase"
+import { apiBase } from "./apiBase";
+import { UserType } from "./authAPI";
 
-type UpdateUserType={
-    updatedUser:ProfileStateType
-    token:string
-    tokenDeathTime:number
+export const instance = axios.create({
+    // baseURL: 'https://neko-back.herokuapp.com/2.0/',
+    baseURL: process.env.REACT_APP_BACK_URL || 'http://localhost:7542/2.0/',
+    withCredentials: true,
+})
 
-}
 export const profileAPI = {
 
-    me() {
-        return apiBase.post(`auth/me`,{})
-            .then(res => res.data)
-    },
+
     updateUserInfo(name:string, avatar:string){
-        return apiBase.put<UpdateUserType>(`auth/me`,{name,avatar})
+        return instance.put<UpdateUserType>(`auth/me`,{name,avatar})
             .then(res=>res.data)
     }
 }
 
 
+
+// types
+type UpdateUserType={
+    updatedUser: UserType
+    error: string
+}
