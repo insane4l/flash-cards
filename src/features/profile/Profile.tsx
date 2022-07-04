@@ -14,9 +14,9 @@ const Profile = () => {
 
     const dispatch = useAppDispatch();
 
-    let name = useAppSelector(state => state.profile.name)
-    const avatar = useAppSelector(state => state.profile.avatar)
-    const email = useAppSelector(state => state.profile.email)
+    let name = useAppSelector(state => state.profile.userData.name)
+    const avatar = useAppSelector(state => state.profile.userData.avatar)
+    const email = useAppSelector(state => state.profile.userData.email)
     const isLoggedIn = useAppSelector(state => state.login._id)
 
 
@@ -24,9 +24,10 @@ const[value,setValue]=useState(name)
 const[newFoto,setNewFoto]=useState(avatar)
 
 
-    const updateUserInfoHandler=()=>{
+    const updateUserInfoHandler= () => {
 
-        dispatch(updateUserInfoTC(value,newFoto))}
+        dispatch(updateUserInfoTC(value,newFoto))
+    }
 
     if (!isLoggedIn) return <Navigate to={PATH.login}/>
     return (
