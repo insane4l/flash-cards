@@ -1,6 +1,7 @@
 import {BaseThunkType, InferActionsTypes} from "../store"
 import {authAPI, LoginParamsType} from "../../api/authAPI";
 
+
  const initialState = {
     _id: '',
     email: '',
@@ -48,7 +49,7 @@ export const loginTC = (email: string, password: string, rememberMe: boolean = f
             .then(res => {
                 if (res) {
                     dispatch(loginActions.setIsLoggedInAC(res))
-                    //    куртилка выключилась
+                       //    куртилка выключилась
                 } else {
                     alert('Упс...что-то не так с сервером')
                 }
