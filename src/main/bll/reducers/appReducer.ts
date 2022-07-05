@@ -1,6 +1,7 @@
 import {authAPI} from "../../api/authAPI"
 import {BaseThunkType, InferActionsTypes} from "../store"
 import {profileActions} from "./profileReducer"
+import {loginActions} from "./loginReducer";
 
 const initialState = {
     isAppInitialized: false,
@@ -9,7 +10,6 @@ const initialState = {
 }
 
 const appReducer = (state: AppStateType = initialState, action: AppActionsTypes): AppStateType => {
-
     switch (action.type) {
         case 'fc/appRed/INITIALIZED_SUCCESSFULLY':
             return {
@@ -51,7 +51,9 @@ export const initializeAppTC = (): BaseThunkType<AppActionsTypes> => async (disp
         const res = await authAPI.authMe()
 
         if (!res.error) {
-           dispatch( profileActions.setUserData(res))
+            dispatch(profileActions.setUserData(res))
+            dispatch(loginActions.setIsLoggedInAC(true))
+            dispatch(appActions.appSetStatusAC('succeeded'))
         }
 
     } catch (e: any) {
@@ -59,7 +61,6 @@ export const initializeAppTC = (): BaseThunkType<AppActionsTypes> => async (disp
 
     } finally {
         dispatch(appActions.initializedSuccessfully())
-        dispatch(appActions.appSetStatusAC('succeeded'))
     }
 }
 
@@ -67,4 +68,4 @@ export const initializeAppTC = (): BaseThunkType<AppActionsTypes> => async (disp
 export default appReducer
 export type RequestStatusType = 'idle' | 'loading' | 'succeeded' | 'failed';
 type AppStateType = typeof initialState
-export type AppActionsTypes = InferActionsTypes<typeof appActions>|InferActionsTypes<typeof profileActions>
+export type AppActionsTypes = InferActionsTypes<typeof appActions> |InferActionsTypes<typeof loginActions>| InferActionsTypes<typeof profileActions>
