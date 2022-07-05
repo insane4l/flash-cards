@@ -1,11 +1,10 @@
-import React, {useCallback, useEffect} from 'react'
+import React, {useEffect} from 'react'
 import { initializeAppTC } from '../bll/reducers/appReducer';
 import {useAppDispatch, useAppSelector} from '../bll/store';
 import './App.css'
 import Spinner from './common/Spinner/Spinner';
 import Header from './Header/Header';
 import RoutesList from './routes/RoutesList';
-import {logoutThunkTC} from "../bll/reducers/loginReducer";
 
 function App() {
 
@@ -15,7 +14,7 @@ function App() {
 	const isAppInitialized = useAppSelector(state => state.app.isAppInitialized)
 	useEffect(() => {
 		dispatch( initializeAppTC() )
-	}, [])
+	}, [dispatch])
 
 	// todo: add some styles for Spinner 
 	return (

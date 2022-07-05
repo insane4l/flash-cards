@@ -47,6 +47,7 @@ export const loginTC = (email: string, password: string, rememberMe: boolean = f
             .then(res => {
                 if (res) {
                     dispatch(loginActions.setIsLoggedInAC(res))
+                    dispatch(profileActions.setUserData(res))
                     dispatch(loginActions.setIsLoggedInAC(true))
                 } else {
                     alert('Упс...что-то не так с сервером')
@@ -86,5 +87,5 @@ export const logoutThunkTC = () => (dispatch:Dispatch) => {
 
 export default loginReducer
 
-export type LoginActionsTypes = InferActionsTypes<typeof loginActions>
+export type LoginActionsTypes = InferActionsTypes<typeof loginActions>| InferActionsTypes<typeof profileActions>
 
