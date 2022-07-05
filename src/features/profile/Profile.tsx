@@ -8,6 +8,9 @@ import SuperButton from "../../main/ui/common/SuperButton/SuperButton";
 import s from "../profile/Profile.module.css"
 import Spinner from "../../main/ui/common/Spinner/Spinner";
 import user from "../../assets/images/user.png"
+import {appActions} from "../../main/bll/reducers/appReducer";
+import Snackbar from "@mui/material/Snackbar";
+import Alert from "@mui/material/Alert";
 
 
 export const Profile = () => {
@@ -16,24 +19,34 @@ export const Profile = () => {
 
     const {name, avatar, email} = useAppSelector(state => state.profile.userData)
     const isLoggedIn = useAppSelector(state => state.login.isLoggedIn)
-    const isLoading = useAppSelector(state => state.profile.loading)
+    const isLoading = useAppSelector(state => state.app.status)
+    const isError = useAppSelector(state => state.app.error)
 
 
     const [value, setValue] = useState(name)
     const [newFoto, setNewFoto] = useState<string | null>(avatar)
-    const [error, setError] = useState<string | null>(null)
 
 
     const updateUserInfoHandler = () => {
         if (value === name) {
-            return setError('Enter another name')
+            dispatch(appActions.setErrorMessage('Same name.Please enter another'))
+
         }
         setNewFoto('')
 
         dispatch(updateUserInfoTC(value, newFoto))
+
     }
 
     if (!isLoggedIn) return <Navigate to={PATH.login}/>
+    const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+
+        dispatch(appActions.setErrorMessage(''))
+    };
+
     return (
         <div className={s.profileBlock}>
             <h3 className={s.pageTitle}>User information</h3>
@@ -52,9 +65,14 @@ export const Profile = () => {
             }}/>
             <div className={s.line}></div>
             <span className={s.underText}>Email</span>
-            <SuperButton className={s.btn} onClick={updateUserInfoHandler}>Save</SuperButton>
-            {error}
-            {isLoading && <Spinner/>}
+            <SuperButton className={s.btn} onClick={updateUserInfoHandler} disabled={isLoading === 'loading'}>Save</SuperButton>
+
+            <Snackbar open={isError !== ''} autoHideDuration={3000} onClose={handleClose}>
+                <Alert onClose={handleClose} severity="error" sx={{width: '100%'}}>
+                    {isError}
+                </Alert>
+            </Snackbar>
+            {isLoading === 'loading' && <Spinner/>}
 
         </div>
     )

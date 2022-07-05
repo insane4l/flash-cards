@@ -2,6 +2,7 @@ import {BaseThunkType, InferActionsTypes} from "../store";
 import {profileAPI} from "../../api/profileAPI";
 import {loginActions} from "./loginReducer";
 import {UserType} from "../../api/authAPI";
+import appReducer, {appActions} from "./appReducer";
 
 const initialState = {
     userData: {
@@ -21,8 +22,7 @@ const initialState = {
     } as UserType,
 
     error: "",
-	loading:false,
-    isLoggedIn: false,
+
 };
 
 export const profileReducer = (
@@ -40,11 +40,8 @@ export const profileReducer = (
                 ...state,
                 error: action.errorMessage
             };
-        case "login/SET-IS-LOGGED-IN":
-            return {...state, isLoggedIn: action.value};
-		case "profile/SET-LOADING":
-			return {...state, loading: action.value}
-		default:
+
+        default:
             return state;
     }
 };
@@ -55,33 +52,33 @@ export const profileActions = {
         ({type: "profile/SET-USER-DATA", user} as const),
     setErrorMessage: (errorMessage: string) =>
         ({type: "profile/SET-ERROR-MESSAGE", errorMessage} as const),
-	setLoading:(value:boolean)=>(
-		{type: "profile/SET-LOADING", value} as const)
+    setLoading: (value: boolean) => (
+        {type: "profile/SET-LOADING", value} as const)
 
 };
 
 //thunks
 export const updateUserInfoTC =
-    (name: string, avatar: string|null): BaseThunkType<ProfileActionsTypes> => async (dispatch) => {
-dispatch(profileActions.setLoading(true))
+    (name: string, avatar: string | null): BaseThunkType<ProfileActionsTypes> => async (dispatch) => {
+        dispatch(appActions.appSetStatusAC("loading"))
+
         try {
             const res = await profileAPI.updateUserInfo(name, avatar)
 
             if (!res.error) {
                 dispatch(profileActions.setUserData(res.updatedUser))
+                dispatch(appActions.appSetStatusAC("succeeded"))
             }
 
         } catch (e: any) {
             dispatch(profileActions.setErrorMessage(e.response.data.error || e.message))
         }
-        finally {
-			dispatch(profileActions.setLoading(false))
-		}
-    };
-
+    }
+;
 
 
 export type ProfileStateType = typeof initialState
 export type ProfileActionsTypes =
     | InferActionsTypes<typeof profileActions>
     | ReturnType<typeof loginActions.setIsLoggedInAC>
+    | InferActionsTypes<typeof appActions>
