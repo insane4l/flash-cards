@@ -22,6 +22,7 @@ const initialState = {
 
     error: "",
 	loading:false,
+    isLoggedIn: false,
 };
 
 export const profileReducer = (
@@ -40,7 +41,7 @@ export const profileReducer = (
                 error: action.errorMessage
             };
         case "login/SET-IS-LOGGED-IN":
-            return {...state, ...action.payload};
+            return {...state, isLoggedIn: action.value};
 		case "profile/SET-LOADING":
 			return {...state, loading: action.value}
 		default:

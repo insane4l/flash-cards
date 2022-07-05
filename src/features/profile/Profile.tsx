@@ -15,7 +15,7 @@ export const Profile = () => {
     const dispatch = useAppDispatch();
 
     const {name, avatar, email} = useAppSelector(state => state.profile.userData)
-    const isLoggedIn = useAppSelector(state => state.login._id)
+    const isLoggedIn = useAppSelector(state => state.login.isLoggedIn)
     const isLoading = useAppSelector(state => state.profile.loading)
 
 
@@ -44,8 +44,8 @@ export const Profile = () => {
 
             </div>
 
-            <EditableTextLine text={value} setNewText={setValue}/>
 
+            <EditableTextLine text={value} setNewText={setValue}/>
             <div className={s.line}></div>
             <span className={s.underText}>Nickname</span>
             <EditableTextLine withEditIcon={false} disabled={true} text={email} setNewText={() => {
