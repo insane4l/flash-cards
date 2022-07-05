@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react'
-import { initializeAppTC } from '../bll/reducers/appReducer';
+import {appActions, initializeAppTC} from '../bll/reducers/appReducer';
 import {useAppDispatch, useAppSelector} from '../bll/store';
 import './App.css'
 import Spinner from './common/Spinner/Spinner';
