@@ -19,12 +19,13 @@ const initialState = {
         token: "",
         tokenDeathTime: 0,
     } as UserType,
-    loading: false,
+
     error: "",
-    isLoggedIn: false
+	loading:false,
+    isLoggedIn: false,
 };
 
-const profileReducer = (
+export const profileReducer = (
     state: ProfileStateType = initialState,
     action: ProfileActionsTypes
 ): ProfileStateType => {
@@ -41,7 +42,9 @@ const profileReducer = (
             };
         case "login/SET-IS-LOGGED-IN":
             return {...state, isLoggedIn: action.value};
-        default:
+		case "profile/SET-LOADING":
+			return {...state, loading: action.value}
+		default:
             return state;
     }
 };
@@ -52,12 +55,15 @@ export const profileActions = {
         ({type: "profile/SET-USER-DATA", user} as const),
     setErrorMessage: (errorMessage: string) =>
         ({type: "profile/SET-ERROR-MESSAGE", errorMessage} as const),
+	setLoading:(value:boolean)=>(
+		{type: "profile/SET-LOADING", value} as const)
+
 };
 
 //thunks
 export const updateUserInfoTC =
-    (name: string, avatar: any): BaseThunkType<ProfileActionsTypes> => async (dispatch) => {
-
+    (name: string, avatar: string|null): BaseThunkType<ProfileActionsTypes> => async (dispatch) => {
+dispatch(profileActions.setLoading(true))
         try {
             const res = await profileAPI.updateUserInfo(name, avatar)
 
@@ -68,9 +74,12 @@ export const updateUserInfoTC =
         } catch (e: any) {
             dispatch(profileActions.setErrorMessage(e.response.data.error || e.message))
         }
+        finally {
+			dispatch(profileActions.setLoading(false))
+		}
     };
 
-export default profileReducer
+
 
 export type ProfileStateType = typeof initialState
 export type ProfileActionsTypes =

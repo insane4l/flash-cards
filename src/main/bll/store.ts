@@ -7,7 +7,7 @@ import loginReducer, { LoginActionsTypes } from './reducers/loginReducer'
 import cardsReducer, { CardsActionsTypes } from './reducers/cardsReducer'
 import newPasswordReducer, { NewPasswordActionsTypes } from './reducers/newPasswordReducer'
 import passwordRecoveryReducer, { PasswordRecoveryActionsTypes } from './reducers/passwordRecoveryReducer'
-import profileReducer, { ProfileActionsTypes } from './reducers/profileReducer'
+import  { ProfileActionsTypes, profileReducer } from './reducers/profileReducer'
 import registrationReducer, { RegistrationActionsTypes } from './reducers/registrationReducer'
 
 const rootReducer = combineReducers({

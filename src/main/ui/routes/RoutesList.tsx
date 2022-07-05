@@ -5,7 +5,7 @@ import NewPassword from '../../../features/auth/NewPassword/NewPassword'
 import PasswordRecovery from '../../../features/auth/PasswordRecovery/PasswordRecovery'
 import Registration from '../../../features/auth/Registration/Registration'
 import ComponentsDemo from '../../../features/demo/ComponentsDemo'
-import Profile from '../../../features/profile/Profile'
+import {Profile} from '../../../features/profile/Profile'
 import Error404 from './Error404/Error404'
 
 export const PATH = {
