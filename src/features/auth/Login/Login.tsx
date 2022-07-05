@@ -6,7 +6,6 @@ import LoginForm from "./LoginForm";
 import AuthBlock from '../AuthBlock';
 import Spinner from "../../../main/ui/common/Spinner/Spinner";
 
-
 const Login = () => {
     const isLoggedIn = useAppSelector(state => state.login.isLoggedIn)
     const isLoading = useAppSelector(state => state.login.isLoading)
