@@ -22,7 +22,6 @@ export const Profile = () => {
     const isLoading = useAppSelector(state => state.app.status)
     const isError = useAppSelector(state => state.app.error)
 
-
     const [value, setValue] = useState(name)
     const [newFoto, setNewFoto] = useState<string | null>(avatar)
 
@@ -52,18 +51,18 @@ export const Profile = () => {
             <h3 className={s.pageTitle}>User information</h3>
             <div className={s.avatar}>
 
-                {avatar ? <img src={avatar}/> : <img src={user}/>}
+                {avatar ? <img src={avatar} alt={''}/> : <img src={user} alt={''}/>}
 
 
             </div>
 
 
             <EditableTextLine text={value} setNewText={setValue}/>
-            <div className={s.line}></div>
+            <div className={s.line}/>
             <span className={s.underText}>Nickname</span>
             <EditableTextLine withEditIcon={false} disabled={true} text={email} setNewText={() => {
             }}/>
-            <div className={s.line}></div>
+            <div className={s.line}/>
             <span className={s.underText}>Email</span>
             <SuperButton className={s.btn} onClick={updateUserInfoHandler} disabled={isLoading === 'loading'}>Save</SuperButton>
 
