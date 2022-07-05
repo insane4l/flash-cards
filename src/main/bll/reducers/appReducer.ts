@@ -10,7 +10,6 @@ const initialState = {
 }
 
 const appReducer = (state: AppStateType = initialState, action: AppActionsTypes): AppStateType => {
-debugger
     switch (action.type) {
         case 'fc/appRed/INITIALIZED_SUCCESSFULLY':
             return {

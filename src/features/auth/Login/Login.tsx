@@ -14,11 +14,11 @@ const Login = () => {
     if (isLoggedIn) return <Navigate to={PATH.profile}/>
 
     return (
-        <AuthBlock 
-			pageTitle="Sign In"
-			navBlockLabel="Don’t have an account?"
-			navLinkPath={PATH.registration}
-			navLinkTitle="Sign Up">
+        <AuthBlock
+            pageTitle="Sign In"
+            navBlockLabel="Don’t have an account?"
+            navLinkPath={PATH.registration}
+            navLinkTitle="Sign Up">
             {isLoading && <Spinner/>}
             <LoginForm/>
         </AuthBlock>

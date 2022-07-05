@@ -8,27 +8,29 @@ import RoutesList from './routes/RoutesList';
 
 function App() {
 
-	const appStyle = {paddingTop: '40px'} // todo: remove (temporary style for fixed header)
+    const appStyle = {paddingTop: '40px'} // todo: remove (temporary style for fixed header)
 
-	const dispatch = useAppDispatch()
-	const isAppInitialized = useAppSelector(state => state.app.isAppInitialized)
-	useEffect(() => {
-		dispatch( initializeAppTC() )
-	}, [dispatch])
+    const dispatch = useAppDispatch()
+    const isAppInitialized = useAppSelector(state => state.app.isAppInitialized)
+    useEffect(() => {
+        dispatch(initializeAppTC())
+    }, [dispatch])
 
-	// todo: add some styles for Spinner 
-	return (
-		<div style={appStyle} className="App">
-			{!isAppInitialized
-				? <Spinner />
-				: <>
-					<Header />
-					<RoutesList />
-				  </>
-			}
+    // todo: add some styles for Spinner
+    return (
+        <div style={appStyle} className="App">
+            {!isAppInitialized
+                ? <div className='loader'>
+                    <Spinner/>
+                </div>
+                : <>
+                    <Header/>
+                    <RoutesList/>
+                </>
+            }
 
-		</div>
-	);
+        </div>
+    );
 }
 
 export default App
