@@ -2,7 +2,8 @@ import {BaseThunkType, InferActionsTypes} from "../store";
 import {profileAPI} from "../../api/profileAPI";
 import {loginActions} from "./loginReducer";
 import {UserType} from "../../api/authAPI";
-import appReducer, {appActions} from "./appReducer";
+import  {appActions} from "./appReducer";
+import axios, {AxiosError} from "axios";
 
 const initialState = {
     userData: {
@@ -69,9 +70,16 @@ export const updateUserInfoTC =
                 dispatch(profileActions.setUserData(res.updatedUser))
                 dispatch(appActions.appSetStatusAC("succeeded"))
             }
-
-        } catch (e: any) {
-            dispatch(profileActions.setErrorMessage(e.response.data.error || e.message))
+//type from valera
+        } catch (e) {
+            const err = e as Error | AxiosError<{ error: string }>
+            if (axios.isAxiosError(err)) {
+                const error = err.response?.data ? err.response.data.error : err.message
+                dispatch(profileActions.setErrorMessage(error))
+            } else {
+                dispatch(profileActions.setErrorMessage(`Native error ${err.message}`))
+            }
+           // dispatch(profileActions.setErrorMessage(e.response.data.error || e.message))
         }
     }
 ;
