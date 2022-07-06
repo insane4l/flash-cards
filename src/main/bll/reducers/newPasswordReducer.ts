@@ -8,7 +8,7 @@ const initialState = {
     isLoading: false,
 }
 
-const newPasswordReducer = (state: NewPasswordStateType = initialState, action: NewPasswordActionsTypes): NewPasswordStateType => {
+export const newPasswordReducer = (state: NewPasswordStateType = initialState, action: NewPasswordActionsTypes): NewPasswordStateType => {
     switch(action.type) {
         case 'fc/newPassword/SET-NEW-PASSWORD-TOKEN':
             return {
@@ -75,7 +75,7 @@ export const createNewPasswordTC = (newPassword: string, token: string): BaseThu
 
 
 
-export default newPasswordReducer
+
 
 type NewPasswordStateType = typeof initialState
 export type NewPasswordActionsTypes = InferActionsTypes<typeof newPasswordActions>

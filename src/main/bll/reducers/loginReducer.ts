@@ -69,8 +69,7 @@ export const logoutThunkTC = () => (dispatch:Dispatch) => {
     dispatch(loginActions.isLoading(true))
     authAPI.logout()
         .then((res) => {
-            dispatch(appActions.setErrorMessage(res.info))
-            dispatch(profileActions.setUserData(res))
+
            dispatch(loginActions.setIsLoggedInAC(false))
         })
         .catch(e => {

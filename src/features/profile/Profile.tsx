@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import {useAppDispatch, useAppSelector} from "../../main/bll/store";
 import {Navigate} from "react-router-dom";
-import {PATH} from "../../main/ui/routes/RoutesList";
+
 import {updateUserInfoTC} from "../../main/bll/reducers/profileReducer";
 import EditableTextLine from "../../main/ui/common/EditableTextLine/EditableTextLine";
 import SuperButton from "../../main/ui/common/SuperButton/SuperButton";
@@ -11,7 +11,8 @@ import user from "../../assets/images/user.png"
 import {appActions} from "../../main/bll/reducers/appReducer";
 import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
-import {BasicTable} from "../packs/PackTable";
+import {PATH} from "../../utils/path";
+
 
 
 export const Profile = () => {
@@ -77,7 +78,7 @@ export const Profile = () => {
 
 
             </div>
-            <BasicTable/>
+
         </>
 
     )

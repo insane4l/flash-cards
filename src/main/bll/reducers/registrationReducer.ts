@@ -7,7 +7,7 @@ const initialState = {
     isLoading: false
 }
 
-const registrationReducer = (state: RegistrationStateType = initialState, action: RegistrationActionsTypes): RegistrationStateType => {
+export const registrationReducer = (state: RegistrationStateType = initialState, action: RegistrationActionsTypes): RegistrationStateType => {
     switch(action.type) {
         case 'fc/registration/SUCCESSFULLY_REGISTERED':
         case 'fc/registration/SET_ERROR_MESSAGE':
@@ -58,7 +58,7 @@ export const registerUserTC = (email: string, password: string): BaseThunkType<R
 
 
 
-export default registrationReducer
+
 
 type RegistrationStateType = typeof initialState
 export type RegistrationActionsTypes = InferActionsTypes<typeof registrationActions>
