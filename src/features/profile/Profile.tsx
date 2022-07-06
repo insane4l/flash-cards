@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import {useAppDispatch, useAppSelector} from "../../main/bll/store";
 import user from "../../assets/images/user.png"
 import {Navigate} from "react-router-dom";
-import {PATH} from "../../main/ui/routes/RoutesList";
+import { PATH } from '../../utils/path';
 import SuperInputText from "../../main/ui/common/SuperInputText/SuperInputText";
 import style from '../profile/Profile.module.css'
 import {updateUserInfoTC} from "../../main/bll/reducers/profileReducer";

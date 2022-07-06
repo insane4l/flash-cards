@@ -6,7 +6,7 @@ import appReducer, { AppActionsTypes } from "./reducers/appReducer"
 import loginReducer, { LoginActionsTypes } from './reducers/loginReducer'
 import cardsReducer, { CardsActionsTypes } from './reducers/cardsReducer'
 import newPasswordReducer, { NewPasswordActionsTypes } from './reducers/newPasswordReducer'
-import passwordRecoveryReducer, { PasswordRecoveryActionsTypes } from './reducers/passwordRecoveryReducer'
+import { passwordRecoveryReducer, PasswordRecoveryActionsTypes } from './reducers/passwordRecoveryReducer'
 import profileReducer, { ProfileActionsTypes } from './reducers/profileReducer'
 import registrationReducer, { RegistrationActionsTypes } from './reducers/registrationReducer'
 

@@ -2,7 +2,7 @@ import React from 'react';
 import {useSelector} from 'react-redux';
 import {Navigate} from 'react-router-dom';
 import {AppRootStateType} from "../../../main/bll/store";
-import {PATH} from "../../../main/ui/routes/RoutesList";
+import { PATH } from '../../../utils/path';
 import LoginForm from "./LoginForm";
 import AuthBlock from '../AuthBlock';
 
