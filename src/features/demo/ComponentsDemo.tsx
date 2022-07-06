@@ -1,8 +1,10 @@
 import React from 'react'
+import FlatProgress from '../../main/ui/common/FlatProgress/FlatProgress'
 import Spinner from '../../main/ui/common/Spinner/Spinner'
 import DemoSectionTemplate from './DemoSectionTemplate'
 import DoubleRangeDemo from './DoubleRangeDemo/DoubleRangeDemo'
 import EditableTextLineDemo from './EditableTextLineDemo/EditableTextLineDemo'
+import { FlyingRocketDemo } from './FlyingRocketDemo/FlyingRocketDemo'
 import ModalWindowDemo from './ModalWindowDemo/ModalWindowDemo'
 import PaginatorDemo from './PaginatorDemo/PaginatorDemo'
 import SuperButtonDemo from './SuperButtonDemo/SuperButtonDemo'
@@ -18,9 +20,11 @@ const commonComponents = [
     {component: <ModalWindowDemo/>, name: "<ModalWindow/>"},
     {component: <EditableTextLineDemo/>, name: "<EditableTextLine/>"},
     {component: <Spinner/>, name: "<Spinner/>"},
+    // {component: <FlatProgress/>, name: "<FlatProgress/>"},
     {component: <DoubleRangeDemo/>, name: "<DoubleRange/>"},
     {component: <PaginatorDemo/>, name: "<Paginator/>"},
     {component: <SuperRadioDemo/>, name: "<SuperRadio/>"},
+    {component: <FlyingRocketDemo/>, name: "<FlyingRocket/>"},
 ]
 
 const ComponentsDemo = () => {
