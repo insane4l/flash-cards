@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import {useAppDispatch, useAppSelector} from "../../main/bll/store";
 import {Navigate} from "react-router-dom";
-import {PATH} from "../../main/ui/routes/RoutesList";
+
 import {updateUserInfoTC} from "../../main/bll/reducers/profileReducer";
 import EditableTextLine from "../../main/ui/common/EditableTextLine/EditableTextLine";
 import SuperButton from "../../main/ui/common/SuperButton/SuperButton";
@@ -11,6 +11,8 @@ import user from "../../assets/images/user.png"
 import {appActions} from "../../main/bll/reducers/appReducer";
 import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
+import {PATH} from "../../utils/path";
+
 
 
 export const Profile = () => {
@@ -47,33 +49,38 @@ export const Profile = () => {
     };
 
     return (
-        <div className={s.profileBlock}>
-            <h3 className={s.pageTitle}>User information</h3>
-            <div className={s.avatar}>
+        <>
+            <div className={s.profileBlock}>
+                <h3 className={s.pageTitle}>User information</h3>
+                <div className={s.avatar}>
 
-                {avatar ? <img src={avatar} alt={''}/> : <img src={user} alt={''}/>}
+                    {avatar ? <img src={avatar} alt={''}/> : <img src={user} alt={''}/>}
+
+
+                </div>
+
+
+                <EditableTextLine text={value} setNewText={setValue}/>
+                <div className={s.line}/>
+                <span className={s.underText}>Nickname</span>
+                <EditableTextLine withEditIcon={false} disabled={true} text={email} setNewText={() => {
+                }}/>
+                <div className={s.line}/>
+                <span className={s.underText}>Email</span>
+                <SuperButton className={s.btn} onClick={updateUserInfoHandler} disabled={isLoading === 'loading'}>Save</SuperButton>
+
+                <Snackbar open={isError !== ''} autoHideDuration={3000} onClose={handleClose}>
+                    <Alert onClose={handleClose} severity="error" sx={{width: '100%'}}>
+                        {isError}
+                    </Alert>
+                </Snackbar>
+                {isLoading === 'loading' && <Spinner/>}
 
 
             </div>
 
+        </>
 
-            <EditableTextLine text={value} setNewText={setValue}/>
-            <div className={s.line}/>
-            <span className={s.underText}>Nickname</span>
-            <EditableTextLine withEditIcon={false} disabled={true} text={email} setNewText={() => {
-            }}/>
-            <div className={s.line}/>
-            <span className={s.underText}>Email</span>
-            <SuperButton className={s.btn} onClick={updateUserInfoHandler} disabled={isLoading === 'loading'}>Save</SuperButton>
-
-            <Snackbar open={isError !== ''} autoHideDuration={3000} onClose={handleClose}>
-                <Alert onClose={handleClose} severity="error" sx={{width: '100%'}}>
-                    {isError}
-                </Alert>
-            </Snackbar>
-            {isLoading === 'loading' && <Spinner/>}
-
-        </div>
     )
 }
 
