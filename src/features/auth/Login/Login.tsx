@@ -1,7 +1,7 @@
 import React from 'react';
 import {Navigate} from 'react-router-dom';
+import { PATH } from '../../../utils/path';
 import {useAppSelector} from "../../../main/bll/store";
-import {PATH} from "../../../main/ui/routes/RoutesList";
 import LoginForm from "./LoginForm";
 import AuthBlock from '../AuthBlock';
 import Spinner from "../../../main/ui/common/Spinner/Spinner";
