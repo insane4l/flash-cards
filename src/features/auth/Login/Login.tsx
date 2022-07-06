@@ -9,19 +9,21 @@ import Spinner from "../../../main/ui/common/Spinner/Spinner";
 
 const Login = () => {
     const isLoggedIn = useAppSelector(state => state.login.isLoggedIn)
-    const isLoading = useAppSelector(state => state.login.isLoading)
+    const status = useAppSelector(state => state.app.status)
 
     if (isLoggedIn) return <Navigate to={PATH.profile}/>
 
     return (
-        <AuthBlock
-            pageTitle="Sign In"
-            navBlockLabel="Don’t have an account?"
-            navLinkPath={PATH.registration}
-            navLinkTitle="Sign Up">
-            {isLoading && <Spinner/>}
-            <LoginForm/>
-        </AuthBlock>
+        <>
+            <AuthBlock
+                pageTitle="Sign In"
+                navBlockLabel="Don’t have an account?"
+                navLinkPath={PATH.registration}
+                navLinkTitle="Sign Up">
+                <LoginForm/>
+                {status === 'loading' && <Spinner/>}
+            </AuthBlock>
+        </>
     )
 }
 
