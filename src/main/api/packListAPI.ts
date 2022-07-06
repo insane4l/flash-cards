@@ -6,6 +6,9 @@ export const packsAPI = {
 
     getPacks(data: DataGetPacksType) {
         return apiBase.get<CardPacksType>(`cards/pack`, {params: data})
+            .then(res=>{
+                return res.data
+            })
 
     },
     addPack(data:DataAddPackType){
@@ -21,7 +24,7 @@ export const packsAPI = {
 }
 
 // types
-type DataGetPacksType = {
+export type DataGetPacksType = {
     packName?: string
     min?: number
     max?: number
@@ -30,7 +33,7 @@ type DataGetPacksType = {
     pageCount?: number
     user_id?: string
 }
-type CardPacksType = {
+export type CardPacksType = {
     cardPacks: PackType[]
     page: number
     pageCount: number
@@ -40,7 +43,7 @@ type CardPacksType = {
     token: string
     tokenDeathTime: number
 }
-type PackType = {
+export type PackType = {
     _id: string
     user_id: string
     user_name: string
@@ -53,8 +56,8 @@ type PackType = {
     cardsCount: number
     type: string
     rating: number
-    created: string
-    updated: string
+    created: Date
+    updated: Date
     more_id: string
     __v: number
 }
