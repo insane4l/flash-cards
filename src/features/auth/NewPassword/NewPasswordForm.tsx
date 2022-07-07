@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React from 'react'
 import { useFormik } from 'formik'
 import { useAppDispatch, useAppSelector } from '../../../main/bll/store'
 import SuperButton from '../../../main/ui/common/SuperButton/SuperButton'

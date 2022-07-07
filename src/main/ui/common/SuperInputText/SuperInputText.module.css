@@ -16,8 +16,7 @@
     border-radius: 4px;
     color: #343a40;
     outline: none;
-    /* todo: remove style */
-    border: 1px solid #1f701a;
+
 }
 
 .superInput:focus-visible {

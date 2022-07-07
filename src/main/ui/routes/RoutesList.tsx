@@ -6,12 +6,12 @@ import { PasswordRecovery } from '../../../features/auth/PasswordRecovery/Passwo
 import { PasswordRecoveryInfo } from '../../../features/auth/PasswordRecoveryInfo/PasswordRecoveryInfo'
 import Registration from '../../../features/auth/Registration/Registration'
 import ComponentsDemo from '../../../features/demo/ComponentsDemo'
-import Profile from '../../../features/profile/Profile'
 import { PATH } from '../../../utils/path'
+import {Profile} from '../../../features/profile/Profile'
 import Error404 from './Error404/Error404'
 
 export const ROUTES = [
-	{ label: 'Login', path: PATH.login, component: <Login /> },
+	{ label: '', path: PATH.login, component: <Login /> },
 	{ label: 'Registration', path: PATH.registration, component: <Registration /> },
 	{ label: 'New Password', path: PATH.newPassword, component: <NewPassword /> },
 	{ label: 'Password Recovery', path: PATH.passwordRecovery, component: <PasswordRecovery /> },
