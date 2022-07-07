@@ -2,7 +2,7 @@ import React, {useCallback} from 'react'
 import {NavLink} from 'react-router-dom';
 import {ROUTES} from '../routes/RoutesList'
 import {useAppDispatch, useAppSelector} from "../../bll/store";
-import {logoutThunkTC} from "../../bll/reducers/loginReducer";
+import {logoutThunkTC} from "../../bll/reducers/appReducer";
 import exitIcon from "../../../assets/icons/exit.png"
 import s from "./Header.module.css"
 

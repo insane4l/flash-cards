@@ -58,11 +58,33 @@ export const initializeAppTC = (): BaseThunkType<AppActionsTypes> => async (disp
 
     } catch (e: any) {
         dispatch(appActions.setErrorMessage(e.response.data.error || e.message))
+        dispatch(appActions.appSetStatusAC('failed'))
 
     } finally {
         dispatch(appActions.initializedSuccessfully())
     }
 }
+
+
+export const logoutThunkTC = (): BaseThunkType<AppActionsTypes> => async (dispatch) => {
+
+    dispatch(appActions.appSetStatusAC('loading'))
+
+    authAPI.logout()
+        .then(() => {
+            dispatch(loginActions.setIsLoggedInAC(false))
+        })
+        .catch(e => {
+            const error = e.response
+                ? e.response.data.error
+                : (e.message + ', more details in the console');
+
+            dispatch(appActions.setErrorMessage(error));
+        })
+        .finally(() => {
+            dispatch(appActions.appSetStatusAC('idle'))
+        });
+};
 
 
 export default appReducer

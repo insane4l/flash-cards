@@ -35,7 +35,9 @@ export const Profile = () => {
             dispatch(profileActions.setErrorMessage('Same name.Please enter another'))
         }
         setNewFoto('')
+
         dispatch(updateUserInfoTC(value, newFoto))
+
     }
 
     if (!isLoggedIn) return <Navigate to={PATH.login}/>
@@ -51,8 +53,13 @@ export const Profile = () => {
             <div className={s.profileBlock}>
                 <h3 className={s.pageTitle}>User information</h3>
                 <div className={s.avatar}>
+
                     {avatar ? <img src={avatar} alt={''}/> : <img src={user} alt={''}/>}
+
+
                 </div>
+
+
                 <EditableTextLine text={value} setNewText={setValue}/>
                 <div className={s.line}/>
                 <span className={s.underText}>Nickname</span>

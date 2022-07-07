@@ -3,6 +3,8 @@ import Spinner from '../../main/ui/common/Spinner/Spinner'
 import DemoSectionTemplate from './DemoSectionTemplate'
 import DoubleRangeDemo from './DoubleRangeDemo/DoubleRangeDemo'
 import EditableTextLineDemo from './EditableTextLineDemo/EditableTextLineDemo'
+import { FlatProgressDemo } from './FlatProgressDemo/FlatProgressDemo'
+import { FlyingRocketDemo } from './FlyingRocketDemo/FlyingRocketDemo'
 import ModalWindowDemo from './ModalWindowDemo/ModalWindowDemo'
 import PaginatorDemo from './PaginatorDemo/PaginatorDemo'
 import SuperButtonDemo from './SuperButtonDemo/SuperButtonDemo'
@@ -18,9 +20,11 @@ const commonComponents = [
     {component: <ModalWindowDemo/>, name: "<ModalWindow/>"},
     {component: <EditableTextLineDemo/>, name: "<EditableTextLine/>"},
     {component: <Spinner/>, name: "<Spinner/>"},
+    {component: <FlatProgressDemo />, name: "<FlatProgress/>"},
     {component: <DoubleRangeDemo/>, name: "<DoubleRange/>"},
     {component: <PaginatorDemo/>, name: "<Paginator/>"},
     {component: <SuperRadioDemo/>, name: "<SuperRadio/>"},
+    {component: <FlyingRocketDemo/>, name: "<FlyingRocket/>"},
 ]
 
 const ComponentsDemo = () => {
