@@ -80,13 +80,15 @@
 }
 
 .fin_left {
-	left: -30px;
+	/* left: -30px; */
+	left: -40%;
 	border-top-left-radius: 80%;
 	border-bottom-left-radius: 20%;
 }
 
 .fin_right {
-	right: -30px;
+	/* right: -30px; */
+	right: -40%;
 	border-top-right-radius: 80%;
 	border-bottom-right-radius: 20%;
 }
