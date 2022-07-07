@@ -5,20 +5,22 @@ export const packsAPI = {
 
 
     getPacks(data: DataGetPacksType) {
+
         return apiBase.get<CardPacksType>(`cards/pack`, {params: data})
             .then(res=>{
                 return res.data
             })
 
     },
-    addPack(data:DataAddPackType){
-        return apiBase.post<NewPackType>(`cards/pack`,{params:data})
+    addNewPack(name:string){
+        return apiBase.post<NewPackType>(`cards/pack`,{cardsPack:{name}})
     },
     deletePack(packId:string){
-        return apiBase.delete<DeletedPackType>(`cards/pack?${packId}` )
+
+         apiBase.delete<DeletedPackType>(`cards/pack?id=${packId}` )
     },
-    updatePack(data:DataUpdatePackType){
-        return apiBase.put<UpdatePackType>(`cards/pack`,{params:data})
+    updatePack(packId:string,name:string){
+        return apiBase.put<UpdatePackType>(`cards/pack`,{cardsPack:{_id:packId,name}})
     }
 
 }
@@ -56,8 +58,8 @@ export type PackType = {
     cardsCount: number
     type: string
     rating: number
-    created: Date
-    updated: Date
+    created: string
+    updated: string
     more_id: string
     __v: number
 }
@@ -78,7 +80,7 @@ type DeletedPackType={
     token:string
     tokenDeathTime:number
 }
-type DataUpdatePackType={
+export type DataUpdatePackType={
     cardsPack:{
         _id:string
         name:string

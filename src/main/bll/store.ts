@@ -10,7 +10,7 @@ import cardsReducer, { CardsActionsTypes } from './reducers/cardsReducer'
 import {PasswordRecoveryActionsTypes, passwordRecoveryReducer} from "./reducers/passwordRecoveryReducer";
 import {RegistrationActionsTypes, registrationReducer} from "./reducers/registrationReducer";
 import {ProfileActionsTypes, profileReducer} from "./reducers/profileReducer";
-import {packsReducer} from "./reducers/packsReducer";
+import {PacksActionsTypes, packsReducer} from "./reducers/packsReducer";
 import {NewPasswordActionsTypes, newPasswordReducer} from "./reducers/newPasswordReducer";
 
 const rootReducer = combineReducers({
@@ -38,7 +38,7 @@ export default store
 
 
 type AppRootActionsType = AppActionsTypes | LoginActionsTypes | NewPasswordActionsTypes
-| PasswordRecoveryActionsTypes | RegistrationActionsTypes | ProfileActionsTypes | CardsActionsTypes 
+| PasswordRecoveryActionsTypes | RegistrationActionsTypes | ProfileActionsTypes | CardsActionsTypes | PacksActionsTypes
 
 
 export type AppRootStateType = ReturnType<typeof rootReducer>
