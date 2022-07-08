@@ -59,8 +59,7 @@ export const profileActions = {
         ({type: "profile/SET-ERROR-MESSAGE", errorMessage} as const),
     setLoading: (value: boolean) => (
         {type: "profile/SET-LOADING", value} as const)
-
-};
+}
 
 //thunks
 export const updateUserInfoTC =

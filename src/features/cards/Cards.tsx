@@ -11,8 +11,8 @@ import Rating from "@mui/material/Rating";
 import StarIcon from '@mui/icons-material/Star';
 import TextField from "@mui/material/TextField";
 import {useNavigate} from "react-router-dom";
-import s from './Cards.module.css'
-import {Paginator} from "../../main/ui/common/Paginator/Paginator";
+import s from '../cards/CardsList/CardsList.module.css'
+import Paginator from "../../main/ui/common/Paginator/Paginator";
 import {useAppDispatch, useAppSelector} from "../../main/bll/store";
 import {SortType} from "../../main/api/cardsAPI";
 import {addCardTC, getCardsTC, removeCardTC, updateCardTC} from "../../main/bll/reducers/cardsReducer";

@@ -6,19 +6,21 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-
-
-import Button from '@mui/material/Button';
-
-import TableFooter from '@mui/material/TableFooter';
-import {Navigate, useNavigate} from "react-router-dom";
+import {Navigate, NavLink, useNavigate} from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "../../main/bll/store";
-import {deletePackTC, editPackTC, setPacksListTC} from "../../main/bll/reducers/packsReducer";
+import {
+    deletePackTC,
+    editPackTC,
+    learnPackTC,
+    packsActions,
+    setPacksListTC
+} from "../../main/bll/reducers/packsReducer";
 import SuperButton from "../../main/ui/common/SuperButton/SuperButton";
+import {PATH} from "../../utils/path";
 
 export const PacksTableList = React.memo(() => {
 
-
+    const navigate = useNavigate();
     const dispatch = useAppDispatch()
     const packs = useAppSelector(state => state.packs.cardPacks)
     const userId = useAppSelector(state => state.profile.userData._id)
@@ -34,22 +36,13 @@ export const PacksTableList = React.memo(() => {
         dispatch(editPackTC(packId,'t'))
       return <Navigate to={'/cards'}/>
   }
-    // const learnPackHandler=(packId:string)=>{
-    //     dispatch()
-    //
-    // }
+    const learnPackHandler = (packId:string) => {
+        dispatch(learnPackTC(packId));
+        navigate(PATH.training + packId);
+    }
 
-    //
-    // const learnHandler = (id: string) => {
-    //     dispatch(learnPack(id))
-    //     navigate( `/train`, {replace: true});
-    //     // <Navigate to={'/card'}/> // когда будет готова страница обучения, редиректим сюда
-    // }
-    //
-    // const createNewPackHandler = (payload: PostPackPayloadType) => {
-    //     dispatch(createNewPack(payload))
-    // }
-    //
+
+
     // const showHandler = useCallback((id: string) => {
     //     navigate('/mainPage/cards')
     //     dispatch(showPack(id))
@@ -92,7 +85,9 @@ export const PacksTableList = React.memo(() => {
                             {packs.map((pack) => {
                                 return <TableRow key={pack._id}>
                                     <TableCell component="th" scope="row">
+                                        <NavLink to={PATH.cardsList + pack._id}>
                                         {pack.name}
+                                        </NavLink>
                                     </TableCell>
                                     <TableCell style={{width: 170}} align="center">
                                         {pack.cardsCount}
@@ -118,7 +113,7 @@ export const PacksTableList = React.memo(() => {
 
 
                                             <SuperButton btnStyle="success"
-                                                         // onClick={() => learnPackHandler(pack._id)}
+                                                          onClick={() => learnPackHandler(pack._id)}
                                             >Learn</SuperButton>
 
                                     </TableCell>

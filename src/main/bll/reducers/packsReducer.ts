@@ -13,6 +13,8 @@ const initialState = {
     maxCardsCount: 0,
     token: '',
     tokenDeathTime: 0,
+    showPackId:'',
+    editPackId:''
 }
 
 
@@ -29,11 +31,18 @@ export const packsReducer = (
             return {
                 ...state,
             };
-        case "packs/EDIT-PACK":
+        case "packs/EDIT-PACK-ID":
+            return {
+                ...state, editPackId: action.packId
+            };
+        case "packs/SET-LEARN-PACK-DATA":
             return {
                 ...state,
             };
-
+        case "packs/SHOW-PACK-ID":
+            return {
+                ...state, showPackId: action.packId
+            }
 
         default:
             return state;
@@ -44,7 +53,9 @@ export const packsReducer = (
 export const packsActions = {
     setPacksList: (cardPacks: PackType[]) => ({type: "packs/SET-PACKS", payload: {cardPacks}} as const),
     deletePack: (packId: string) => ({type: "packs/DEL-PACK", packId} as const),
-    editPack: (packId: string, name: string) => ({type: "packs/EDIT-PACK", packId, name} as const)
+    editPackId: (packId: string) => ({type: "packs/EDIT-PACK-ID", packId} as const),
+    setLearnPack : (packId:string) => ({type: "packs/SET-LEARN-PACK-DATA", packId} as const),
+    showPackId:(packId:string)=>({type:"packs/SHOW-PACK-ID",packId}as const)
 
 
 };
@@ -149,28 +160,28 @@ export const editPackTC =
             }
         }
 ;
-// export const learnPackTC =
-//         (packId: string): BaseThunkType<PacksActionsTypes> => async (dispatch) => {
-//             dispatch(appActions.appSetStatusAC("loading"))
-//             await packsAPI.learnPack(packId)
-//             try {
-//
-//                 dispatch(setMyPacksListTC())
-//                 dispatch(appActions.appSetStatusAC("succeeded"))
-//
-// //type from valera
-//             } catch (e) {
-//                 const err = e as Error | AxiosError<{ error: string }>
-//                 if (axios.isAxiosError(err)) {
-//                     const error = err.response?.data ? err.response.data.error : err.message
-//                     //dispatch(profileActions.setErrorMessage(error))
-//                 } else {
-//                     //dispatch(profileActions.setErrorMessage(`Native error ${err.message}`))
-//                 }
-//                 // dispatch(profileActions.setErrorMessage(e.response.data.error || e.message))
-//             }
-//         }
-// ;
+export const learnPackTC =
+        (packId: string): BaseThunkType<PacksActionsTypes> => async (dispatch) => {
+            dispatch(appActions.appSetStatusAC("loading"))
+
+            try {
+                await packsActions.setLearnPack(packId)
+
+                dispatch(appActions.appSetStatusAC("succeeded"))
+
+
+            } catch (e) {
+                const err = e as Error | AxiosError<{ error: string }>
+                if (axios.isAxiosError(err)) {
+                    const error = err.response?.data ? err.response.data.error : err.message
+                   // dispatch(profileActions.setErrorMessage(error))
+                } else {
+                   // dispatch(profileActions.setErrorMessage(`Native error ${err.message}`))
+                }
+
+            }
+        }
+;
 export const addNewPackTC =
         ( name: string): BaseThunkType<PacksActionsTypes> => async (dispatch) => {
             dispatch(appActions.appSetStatusAC("loading"))
@@ -193,6 +204,7 @@ export const addNewPackTC =
             }
         }
 ;
+
 export type PacksStateType = typeof initialState
 
 export type PacksActionsTypes = InferActionsTypes<typeof packsActions> | InferActionsTypes<typeof appActions>

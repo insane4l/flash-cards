@@ -64,7 +64,7 @@ export const Profile = () => {
                 <div className={s.line}/>
                 <span className={s.underText}>Nickname</span>
                 <EditableTextLine withEditIcon={false} disabled={true} text={email} setNewText={() => {
-                }}/>
+                }} />
                 <div className={s.line}/>
                 <span className={s.underText}>Email</span>
                 <SuperButton className={s.btn} onClick={updateUserInfoHandler}
@@ -77,7 +77,7 @@ export const Profile = () => {
                 </Snackbar>
                 {isLoading && <Spinner/>}
             </div>
-            <PackList/>
+
         </>
 
     )
