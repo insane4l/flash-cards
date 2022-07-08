@@ -6,7 +6,9 @@ import s from './PacksList.module.css'
 import SuperButton from "../../../main/ui/common/SuperButton/SuperButton";
 import {setMyPacksListTC, setPacksListTC} from "../../../main/bll/reducers/packsReducer";
 import DoubleRange from "../../../main/ui/common/DoubleRange/DoubleRange";
-import PackList from "../../packs/PackList";
+import { PacksTable } from './PacksTable/PacksTable'
+import { SearchForm } from '../SearchForm/SearchForm'
+import { AddNewPack } from '../AddNewPack/AddNewPack'
 
 export const PacksList = () => {
     const dispatch = useAppDispatch()
@@ -33,7 +35,12 @@ export const PacksList = () => {
                 {/*<DoubleRange min={} max={}/>*/}
             </div>
             <div className={s.packList}>
-                <PackList/>
+                <div className={s.packListHeader}>
+                    <SearchForm />
+                    <AddNewPack />
+                </div>
+                
+                <PacksTable />
             </div>
 
         </div>

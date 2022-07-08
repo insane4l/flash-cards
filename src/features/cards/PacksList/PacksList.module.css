@@ -15,6 +15,12 @@
 .wrapper{
     display: flex;
 }
+
+.packListHeader {
+    display: flex;
+    justify-content: space-between;
+}
+
 .btn{
     display: flex;
     margin-bottom: 50px;

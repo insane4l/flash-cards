@@ -1,4 +1,5 @@
 import {BaseThunkType, InferActionsTypes} from "../store";
+
 import {packsAPI, PackType} from "../../api/packListAPI";
 import axios, {AxiosError} from "axios";
 import {appActions} from "./appReducer";
@@ -6,14 +7,14 @@ import {appActions} from "./appReducer";
 const initialState = {
     cardPacks: [] as PackType[],
     page: 1,
-    pageCount: 5,
+    pageCount: 10,
     cardPacksTotalCount: 0,
     minCardsCount: 0,
     maxCardsCount: 0,
     token: '',
     tokenDeathTime: 0,
-    showPackId: '',
-    editPackId: ''
+    showPackId:'',
+    editPackId:''
 }
 
 
@@ -38,10 +39,11 @@ export const packsReducer = (
             return {
                 ...state,
             };
-        case "packs/SHOW-PACK-ID":
+        case "packs/SET-SELECTED-PACK-ID":
             return {
-                ...state, showPackId: action.packId
+                ...state, selectedPackId: action.packId
             }
+
         default:
             return state;
     }
@@ -52,10 +54,9 @@ export const packsActions = {
     setPacksList: (cardPacks: PackType[]) => ({type: "packs/SET-PACKS", payload: {cardPacks}} as const),
     deletePack: (packId: string) => ({type: "packs/DEL-PACK", packId} as const),
     editPackId: (packId: string) => ({type: "packs/EDIT-PACK-ID", packId} as const),
-    setLearnPack: (packId: string) => ({type: "packs/SET-LEARN-PACK-DATA", packId} as const),
-    showPackId: (packId: string) => ({type: "packs/SHOW-PACK-ID", packId} as const),
-    setErrorMessage: (errorMessage: string) =>
-        ({type: "packs/SET-ERROR-MESSAGE", errorMessage} as const),
+    setLearnPack : (packId:string) => ({type: "packs/SET-LEARN-PACK-DATA", packId} as const),
+    setSelectedPackId:(packId:string)=>({type:"packs/SET-SELECTED-PACK-ID", packId}as const)
+
 
 };
 
