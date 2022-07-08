@@ -56,13 +56,15 @@ const RegistrationFrom = () => {
 				error={emailError}
 				{...formik.getFieldProps('email')} />
 
-			<SuperInputText 
+			<SuperInputText
+				passwordType 
 				type='password'
 				label='Password'
 				error={passwordError}
 				{...formik.getFieldProps('password')} />
 
 			<SuperInputText
+				passwordType
 				type='password'
 				label='Confirm password'
 				error={password2Error}

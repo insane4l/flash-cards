@@ -55,7 +55,8 @@ const LoginForm = () => {
                     {...formik.getFieldProps('email')}
                 />
 
-                <SuperInputText 
+                <SuperInputText
+                    passwordType 
                     className={s.input}
                     type='password'
                     label='Password'
