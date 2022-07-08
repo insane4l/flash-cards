@@ -10,9 +10,16 @@ export const DevNavigation = () => {
         display: 'flex', justifyContent: 'center', gap: '30px',
     } as React.CSSProperties
 
-    const mappedLinks = ROUTES.map(el => <NavLink
-        key={el.path} style={({isActive}) => isActive ? {color: 'red'} : {}}
-        to={el.path}>{el.label}</NavLink>)
+    const mappedLinks = ROUTES.map(el => {
+        const path = (el.label === 'CardsList' || el.label === 'Training') 
+            ? el.path.replace(/:packId/, '') : el.path
+
+        return (
+            <NavLink
+            key={path} style={({isActive}) => isActive ? {color: 'red'} : {}}
+            to={path}>{el.label}</NavLink>
+        )
+    })
 
     return (
         <div style={headerStyle}>

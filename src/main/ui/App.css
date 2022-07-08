@@ -2,7 +2,7 @@
     min-height: 101vh;
 }
 .app__content {
-    padding-top: 40px;
+    padding: 40px 0 80px 0;
 }
 .app__loader{
     width: 50px;

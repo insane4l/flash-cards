@@ -11,7 +11,6 @@ import {appActions} from "../../main/bll/reducers/appReducer";
 import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
 import {PATH} from "../../utils/path";
-import PackList from "../packs/PackList";
 
 
 export const Profile = () => {
