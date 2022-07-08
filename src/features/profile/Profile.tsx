@@ -5,13 +5,10 @@ import {profileActions, updateUserInfoTC} from "../../main/bll/reducers/profileR
 import EditableTextLine from "../../main/ui/common/EditableTextLine/EditableTextLine";
 import SuperButton from "../../main/ui/common/SuperButton/SuperButton";
 import s from "../profile/Profile.module.css"
-import Spinner from "../../main/ui/common/Spinner/Spinner";
 import user from "../../assets/images/user.png"
-import {appActions} from "../../main/bll/reducers/appReducer";
 import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
 import {PATH} from "../../utils/path";
-import PackList from "../packs/PackList";
 
 
 export const Profile = () => {
@@ -75,7 +72,7 @@ export const Profile = () => {
                         {isError}
                     </Alert>
                 </Snackbar>
-                {isLoading && <Spinner/>}
+
             </div>
 
         </>
