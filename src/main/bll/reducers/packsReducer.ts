@@ -1,6 +1,5 @@
 import {BaseThunkType, InferActionsTypes} from "../store";
-
-import {DataGetPacksType, DataUpdatePackType, packsAPI, PackType} from "../../api/packListAPI";
+import {packsAPI, PackType} from "../../api/packListAPI";
 import axios, {AxiosError} from "axios";
 import {appActions} from "./appReducer";
 
@@ -95,8 +94,6 @@ export const setPacksListTC = (): BaseThunkType<PacksActionsTypes> => async (dis
             const res = await packsAPI.getPacks({
                 pageCount, page, user_id: ''
             })
-
-
             dispatch(packsActions.setPacksList(res.cardPacks))
             dispatch(appActions.appSetStatusAC("succeeded"))
 
@@ -193,5 +190,4 @@ export const addNewPackTC =
 ;
 
 export type PacksStateType = typeof initialState
-
 export type PacksActionsTypes = InferActionsTypes<typeof packsActions> | InferActionsTypes<typeof appActions>
