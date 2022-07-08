@@ -37,7 +37,7 @@ const LoginForm = () => {
         },
         onSubmit: values => {
             dispatch(loginTC(values.email, values.password, values.rememberMe));
-            formik.resetForm();
+
         },
     })
 
