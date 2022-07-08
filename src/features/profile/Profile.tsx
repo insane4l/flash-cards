@@ -16,7 +16,7 @@ import {PATH} from "../../utils/path";
 
 export const Profile = () => {
 
-    const dispatch = useAppDispatch();
+    const dispatch = useAppDispatch()
 
     const {name, avatar, email} = useAppSelector(state => state.profile.userData)
     const isLoggedIn = useAppSelector(state => state.login.isLoggedIn)
@@ -38,14 +38,17 @@ export const Profile = () => {
 
     }
 
-    if (!isLoggedIn) return <Navigate to={PATH.login}/>
+    
     const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
         if (reason === 'clickaway') {
-            return;
+            return
         }
 
         dispatch(appActions.setErrorMessage(''))
-    };
+    }
+
+
+    if (!isLoggedIn) return <Navigate to={PATH.login}/>
 
     return (
         <>
