@@ -13,8 +13,9 @@ const initialState = {
     maxCardsCount: 0,
     token: '',
     tokenDeathTime: 0,
-    showPackId:'',
-    editPackId:''
+    selectedPackId:'',
+    editPackId:'',
+    error:''
 }
 
 
@@ -43,7 +44,11 @@ export const packsReducer = (
             return {
                 ...state, selectedPackId: action.packId
             }
-
+        case "packs/SET-ERROR-MESSAGE":
+            return {
+                ...state,
+                error: action.errorMessage
+            };
         default:
             return state;
     }
@@ -55,8 +60,9 @@ export const packsActions = {
     deletePack: (packId: string) => ({type: "packs/DEL-PACK", packId} as const),
     editPackId: (packId: string) => ({type: "packs/EDIT-PACK-ID", packId} as const),
     setLearnPack : (packId:string) => ({type: "packs/SET-LEARN-PACK-DATA", packId} as const),
-    setSelectedPackId:(packId:string)=>({type:"packs/SET-SELECTED-PACK-ID", packId}as const)
-
+    setSelectedPackId:(packId:string)=>({type:"packs/SET-SELECTED-PACK-ID", packId}as const),
+    setErrorMessage: (errorMessage: string) =>
+        ({type: "packs/SET-ERROR-MESSAGE", errorMessage} as const),
 
 };
 
