@@ -2,7 +2,7 @@ import React, { createRef, FC, useEffect, useState } from 'react'
 import { Rocket } from '../FlyingRocket/Rocket/Rocket'
 import s from './FlatProgress.module.css'
 
-export const FlatProgress: FC<FlatProgressPropsType> = ({withColoredLine, isLoading}) => {
+export const FlatProgress: FC<FlatProgressPropsType> = ({withColoredLine, withColoredLineOnLoading, isLoading}) => {
 
     const wrapperRef = createRef<HTMLDivElement>()
     const [animationDuration, setAnimationDuration] = useState('2000ms')
@@ -23,10 +23,12 @@ export const FlatProgress: FC<FlatProgressPropsType> = ({withColoredLine, isLoad
         OAnimationDuration: animationDuration,
     }
     
+    const showColoredLine = (withColoredLineOnLoading && isLoading) || withColoredLine
+
     return (
         <div ref={wrapperRef} className={s.wrapper}>
 
-            {(withColoredLine && isLoading) 
+            {showColoredLine 
                 && <div className={s.progressLine}></div>
             }
 
@@ -41,6 +43,13 @@ export const FlatProgress: FC<FlatProgressPropsType> = ({withColoredLine, isLoad
 
 
 type FlatProgressPropsType = {
+    /**
+     * Show colored background line
+     */
     withColoredLine?: boolean
+    /**
+     * Show colored background line only when loading status
+     */
+    withColoredLineOnLoading?: boolean
     isLoading: boolean
 }

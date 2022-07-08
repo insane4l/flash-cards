@@ -1,4 +1,5 @@
 import React from 'react'
+import { MainLogo } from '../../main/ui/common/MainLogo/MainLogo'
 import Spinner from '../../main/ui/common/Spinner/Spinner'
 import DemoSectionTemplate from './DemoSectionTemplate'
 import DoubleRangeDemo from './DoubleRangeDemo/DoubleRangeDemo'
@@ -14,7 +15,6 @@ import SuperRadioDemo from './SuperRadioDemo/SuperRadioDemo'
 
 const commonComponents = [
     {component: <SuperButtonDemo/>, name: "<SuperButton/>"},
-
     {component: <SuperInputTextDemo/>, name: "<SuperInputText/>"},
     {component: <SuperCheckboxDemo/>, name: "<SuperCheckbox/>"},
     {component: <ModalWindowDemo/>, name: "<ModalWindow/>"},
@@ -25,6 +25,7 @@ const commonComponents = [
     {component: <PaginatorDemo/>, name: "<Paginator/>"},
     {component: <SuperRadioDemo/>, name: "<SuperRadio/>"},
     {component: <FlyingRocketDemo/>, name: "<FlyingRocket/>"},
+    {component: <MainLogo/>, name: "<MainLogo/>"},
 ]
 
 const ComponentsDemo = () => {
