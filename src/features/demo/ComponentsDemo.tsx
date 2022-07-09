@@ -1,6 +1,7 @@
 import React from 'react'
 import { MainLogo } from '../../main/ui/common/MainLogo/MainLogo'
 import Spinner from '../../main/ui/common/Spinner/Spinner'
+import { DeferredTextInputDemo } from './DeferredTextInputDemo/DeferredTextInputDemo'
 import DemoSectionTemplate from './DemoSectionTemplate'
 import DoubleRangeDemo from './DoubleRangeDemo/DoubleRangeDemo'
 import EditableTextLineDemo from './EditableTextLineDemo/EditableTextLineDemo'
@@ -26,6 +27,7 @@ const commonComponents = [
     {component: <SuperRadioDemo/>, name: "<SuperRadio/>"},
     {component: <FlyingRocketDemo/>, name: "<FlyingRocket/>"},
     {component: <MainLogo/>, name: "<MainLogo/>"},
+    {component: <DeferredTextInputDemo />, name: "<DeferredTextInputDemo/>"},
 ]
 
 const ComponentsDemo = () => {

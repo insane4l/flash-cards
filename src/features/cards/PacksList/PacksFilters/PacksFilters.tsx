@@ -2,8 +2,8 @@ import React from 'react'
 import { packsActions } from '../../../../main/bll/reducers/packsReducer'
 import { useAppDispatch, useAppSelector } from '../../../../main/bll/store'
 import SuperButton from '../../../../main/ui/common/SuperButton/SuperButton'
-import { SearchForm } from '../../SearchForm/SearchForm'
 import s from './PacksFilters.module.css'
+import { PacksSearchInput } from './PacksSearchInput/PacksSearchInput'
 
 export const PacksFilters = () => {
 
@@ -22,7 +22,7 @@ export const PacksFilters = () => {
 
 	return (
 		<div className={s.packBlock}>
-			<SearchForm />
+			<PacksSearchInput />
 			<div className={s.btn}>
 				<SuperButton onClick={onShowAuthUserPacks}> My Packs</SuperButton>
 				<SuperButton onClick={onShowAllUsersPacks}> All Packs</SuperButton>

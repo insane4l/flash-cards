@@ -9,8 +9,8 @@ import { Navigate } from 'react-router-dom'
 import { PATH } from '../../../utils/path'
 import { packsActions } from "../../../main/bll/reducers/packsReducer";
 import SuperButton from "../../../main/ui/common/SuperButton/SuperButton";
-import { SearchForm } from "../SearchForm/SearchForm";
 import { CardsTable } from "./CardsTable/CardsTable";
+import { CardsSearchInput } from "./CardsSearchInput/CardsSearchInput";
 
 
 
@@ -66,7 +66,7 @@ export const CardsList = () => {
                     </SuperButton>
 
                     <div style={{marginTop: '20px'}}>
-                        <SearchForm />
+                        <CardsSearchInput />
                     </div>
 
                     <CardsTable cards={cards} selectedPackId={selectedPackId} page={page}/>
