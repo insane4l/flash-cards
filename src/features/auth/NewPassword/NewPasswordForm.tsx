@@ -42,7 +42,6 @@ export const NewPasswordForm = () => {
 
             <SuperInputText
                 passwordType
-                type='password'
                 label='Password'
                 error={passwordError}
                 {...formik.getFieldProps('password')} />

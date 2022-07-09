@@ -20,7 +20,7 @@ export const CardsList = () => {
 
     const isLoggedIn = useAppSelector(state => state.login.isLoggedIn)
     const selectedPackId = useAppSelector(state => state.packs.selectedPackId)
-    const status = useAppSelector(state => state.app.status)
+    const appStatus = useAppSelector(state => state.app.status)
     const cards = useAppSelector(state => state.cards.cards)
     
     // const cardsTotalCount = useAppSelector(state => state.cards.cardsTotalCount)
@@ -58,7 +58,7 @@ export const CardsList = () => {
 
     return (
         <div className={s.mainContainer}>
-            {status === 'succeeded' 
+            {appStatus === 'succeeded' 
                 ? <Paper className={s.container} style={{padding: '15px'}}>
 
                     <SuperButton className={s.btnsBack} onClick={backHandler} btnStyle="primary">

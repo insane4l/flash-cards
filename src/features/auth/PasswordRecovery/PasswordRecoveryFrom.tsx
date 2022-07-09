@@ -43,7 +43,6 @@ export const PasswordRecoveryFrom = () => {
         <form className={s.recoveryForm} onSubmit={formik.handleSubmit}>
 
             <SuperInputText
-                type='email'
                 label='Email'
                 error={emailError}
                 {...formik.getFieldProps('email')} />

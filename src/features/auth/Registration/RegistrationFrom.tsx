@@ -51,21 +51,19 @@ const RegistrationFrom = () => {
 		<form className={s.regForm} onSubmit={formik.handleSubmit}>
 
 			<SuperInputText
-				type='email'
+
 				label='Email'
 				error={emailError}
 				{...formik.getFieldProps('email')} />
 
 			<SuperInputText
 				passwordType 
-				type='password'
 				label='Password'
 				error={passwordError}
 				{...formik.getFieldProps('password')} />
 
 			<SuperInputText
 				passwordType
-				type='password'
 				label='Confirm password'
 				error={password2Error}
 				{...formik.getFieldProps('password2')} />
