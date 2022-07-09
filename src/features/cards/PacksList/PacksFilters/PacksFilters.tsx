@@ -2,6 +2,7 @@ import React from 'react'
 import { packsActions } from '../../../../main/bll/reducers/packsReducer'
 import { useAppDispatch, useAppSelector } from '../../../../main/bll/store'
 import SuperButton from '../../../../main/ui/common/SuperButton/SuperButton'
+import { CardsCountRange } from './CardsCountRange/CardsCountRange'
 import s from './PacksFilters.module.css'
 import { PacksSearchInput } from './PacksSearchInput/PacksSearchInput'
 
@@ -27,7 +28,7 @@ export const PacksFilters = () => {
 				<SuperButton onClick={onShowAuthUserPacks}> My Packs</SuperButton>
 				<SuperButton onClick={onShowAllUsersPacks}> All Packs</SuperButton>
 			</div>
-			{/* <DoubleRange min={} max={}/> */}
+			<CardsCountRange />
 		</div>
 	)
 }
