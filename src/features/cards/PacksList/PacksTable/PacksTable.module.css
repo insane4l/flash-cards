@@ -1,0 +1,14 @@
+.infoIconWrapper {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    width: 19px;
+    height: 19px;
+}
+.infoIcon {
+    width: 100%;
+    height: 100%;
+    user-select: none;
+    -webkit-user-drag: none;
+    /* cursor: help; */
+}

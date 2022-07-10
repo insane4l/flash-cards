@@ -13,6 +13,6 @@ export const PacksSearchInput = () => {
 	}, [dispatch])
 
 	return (
-		<DeferredTextInput onChange={onChangeHandler} placeholder="Pack search" />
+		<DeferredTextInput onChange={onChangeHandler} placeholder="Search" />
 	)
 }
