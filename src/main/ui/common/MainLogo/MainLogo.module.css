@@ -8,6 +8,7 @@
     margin-right: 0.2em;
     border-radius: 0.6em;
     box-shadow: 0 0 0.2em #6b15b7;
+    -webkit-user-drag: none;
 }
 
 .text {
@@ -20,4 +21,5 @@
     text-shadow: 0.12em 0.12em 0.2em rgba(88,25,146,0.6);
     font-size: 1em;
     line-height: 1em;
+    user-select: none;
 }
