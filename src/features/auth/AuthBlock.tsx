@@ -34,7 +34,7 @@ pageTitle, children, navBlockLabel, navLinkPath, navLinkTitle, withRocket }) => 
         <div className={s.wrapper}>
             <div className={`${s.authBlock} ${rocketPositionCN}`}>
                 <div className={s.authBox}>
-                    <MainLogo className={s.mainLogo} />
+                    <MainLogo size={22} className={s.mainLogo} />
                     <h1 className={s.pageTitle}>
                         {pageTitle}
                     </h1>
