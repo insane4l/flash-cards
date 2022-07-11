@@ -8,9 +8,6 @@ import { validateField } from '../../../utils/fieldValidators'
 import s from './PasswordRecovery.module.css'
 
 
-// AuthBlock: error, trigger, loadingStatus
-// todo: handle error with snackbar
-// todo: isLoadig -> add flat spinner
 export const PasswordRecoveryFrom = () => {
 
     const dispatch = useAppDispatch()

@@ -3,7 +3,7 @@ import './SuperAlert.css'
 
 
 /** Customize animation 
- * You can customize show/hide animation of snackbar
+ * You can customize show/hide animation of SuperAlert
  * .super-alert styles when SuperAlert is hidden
  * .super-alert.active styles when SuperAlert is displayed */
 export const SuperAlert: FC<SuperAlertPropsType> = React.memo( (
@@ -121,4 +121,4 @@ export type SuperAlertPropsType = {
     transitionDuration?: number
 }
 
-export type SuperAlertVariantType = "success" | "error" | undefined
+export type SuperAlertVariantType = "success" | "error" | "info" | undefined

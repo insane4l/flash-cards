@@ -79,139 +79,90 @@ export const packsActions = {
     setPackOwnerId:(user_id:string)=>({type:"packs/filters/SET-PACK-OWNER-ID", payload: {user_id}}as const),
 };
 
+
+
+
 //thunks
 export const requestPacksListTC = (): BaseThunkType<PacksActionsTypes> => async (dispatch, getState) => {
 
     try {
-        dispatch(appActions.appSetStatusAC("loading"))
+        dispatch(appActions.setAppStatus("loading"))
 
         const filterParams = getState().packs.filters
         const res = await packsAPI.getPacks(filterParams)
 
         dispatch(packsActions.setPacksList(res.cardPacks))
         dispatch( packsActions.setPacksTotalCount(res.cardPacksTotalCount) )
-        dispatch(appActions.appSetStatusAC("succeeded"))
+        dispatch(appActions.setAppStatus("succeeded"))
 
     } catch (e: any) {
-        dispatch( appActions.setErrorMessage( e.response?.data?.error || e.message ) )
-        dispatch( appActions.appSetStatusAC("failed") )
+        dispatch( appActions.setAppErrorMessage( e.response?.data?.error || e.message ) )
+        dispatch( appActions.setAppStatus("failed") )
     }
 }
-;
 
-
-
-
-// export const setMyPacksListTC = (): BaseThunkType<PacksActionsTypes> => async (dispatch, getState) => {
-//         const _id = getState().profile.userData._id
-//         const {pageCount, page} = getState().packs
-//         dispatch(appActions.appSetStatusAC("loading"))
-
-//         try {
-//             const res = await packsAPI.getPacks({
-//                 pageCount, page, user_id: _id
-//             })
-
-//             dispatch( packsActions.setPacksTotalCount(res.cardPacksTotalCount) )
-//             dispatch(packsActions.setPacksList(res.cardPacks))
-//             dispatch(appActions.appSetStatusAC("succeeded"))
-
-// //type from valera
-//         } catch (e: any) {
-//             dispatch( newPasswordActions.setErrorMessage( e.response?.data?.error || e.message ) )
-//         }
-//     }
-// ;
-// export const setPacksListTC = (): BaseThunkType<PacksActionsTypes> => async (dispatch, getState) => {
-
-//         const {pageCount, page} = getState().packs
-//         dispatch(appActions.appSetStatusAC("loading"))
-
-//         try {
-//             const res = await packsAPI.getPacks({
-//                 pageCount, page, user_id: ''
-//             })
-
-
-//             dispatch(packsActions.setPacksList(res.cardPacks))
-//             dispatch( packsActions.setPacksTotalCount(res.cardPacksTotalCount) )
-//             dispatch(appActions.appSetStatusAC("succeeded"))
-
-// //type from valera
-//         } catch (e) {
-//             const err = e as Error | AxiosError<{ error: string }>
-//             if (axios.isAxiosError(err)) {
-//                 const error = err.response?.data ? err.response.data.error : err.message
-//                 //dispatch(profileActions.setErrorMessage(error))
-//             } else {
-//                 //dispatch(profileActions.setErrorMessage(`Native error ${err.message}`))
-//             }
-//             // dispatch(profileActions.setErrorMessage(e.response.data.error || e.message))
-//         }
-//     }
-// ;
 
 
 export const deletePackTC =
         (packId: string): BaseThunkType<PacksActionsTypes> => async (dispatch) => {
-            dispatch(appActions.appSetStatusAC("loading"))
+            dispatch(appActions.setAppStatus("loading"))
 
             try {
                 await packsAPI.deletePack(packId)
                 // dispatch(setMyPacksListTC())
 
 
-                dispatch(appActions.appSetStatusAC("succeeded"))
+                dispatch(appActions.setAppStatus("succeeded"))
 
             } catch (e: any) {
-                dispatch( appActions.setErrorMessage( e.response?.data?.error || e.message ) )
-                dispatch( appActions.appSetStatusAC("failed") )
+                dispatch( appActions.setAppErrorMessage( e.response?.data?.error || e.message ) )
+                dispatch( appActions.setAppStatus("failed") )
             }
         }
 ;
 export const editPackTC =
         (packId: string, name: string): BaseThunkType<PacksActionsTypes> => async (dispatch) => {
-            dispatch(appActions.appSetStatusAC("loading"))
+            dispatch(appActions.setAppStatus("loading"))
 
             try {
                 await packsAPI.updatePack(packId, name)
                 // dispatch(setMyPacksListTC())
-                dispatch(appActions.appSetStatusAC("succeeded"))
+                dispatch(appActions.setAppStatus("succeeded"))
 
             } catch (e: any) {
-                dispatch( appActions.setErrorMessage( e.response?.data?.error || e.message ) )
-                dispatch( appActions.appSetStatusAC("failed") )
+                dispatch( appActions.setAppErrorMessage( e.response?.data?.error || e.message ) )
+                dispatch( appActions.setAppStatus("failed") )
             }
         }
 ;
 export const learnPackTC =
         (packId: string): BaseThunkType<PacksActionsTypes> => async (dispatch) => {
-            dispatch(appActions.appSetStatusAC("loading"))
+            dispatch(appActions.setAppStatus("loading"))
 
             try {
                 // await packsActions.setLearnPack(packId)
 
-                dispatch(appActions.appSetStatusAC("succeeded"))
+                dispatch(appActions.setAppStatus("succeeded"))
 
 
             } catch (e: any) {
-                dispatch( appActions.setErrorMessage( e.response?.data?.error || e.message ) )
-                dispatch( appActions.appSetStatusAC("failed") )
+                dispatch( appActions.setAppErrorMessage( e.response?.data?.error || e.message ) )
+                dispatch( appActions.setAppStatus("failed") )
             }
         }
 ;
 export const addNewPackTC =
         ( name: string): BaseThunkType<PacksActionsTypes> => async (dispatch) => {
-            dispatch(appActions.appSetStatusAC("loading"))
+            dispatch(appActions.setAppStatus("loading"))
             await packsAPI.addNewPack( name)
             try {
 
                 // dispatch(setMyPacksListTC())
-                dispatch(appActions.appSetStatusAC("succeeded"))
+                dispatch(appActions.setAppStatus("succeeded"))
 
             } catch (e: any) {
-                dispatch( appActions.setErrorMessage( e.response?.data?.error || e.message ) )
-                dispatch( appActions.appSetStatusAC("failed") )
+                dispatch( appActions.setAppErrorMessage( e.response?.data?.error || e.message ) )
+                dispatch( appActions.setAppStatus("failed") )
             }
         }
 ;

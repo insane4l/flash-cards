@@ -6,7 +6,8 @@
     max-width: 440px;
     padding: 22px;
     border-radius: 4px;
-    background-color: #6b15b7;
+    /* bgc when 'variant' prop = undefined */
+    background-color: #025fff;
     color: #ffffff;
     font-size: 18px;
     font-weight: 600;
@@ -15,6 +16,9 @@
     transform: translateX(100%);
 }
 
+.super-alert.info {
+    background-color: #6b15b7;
+}
 .super-alert.error {
     background-color: red;
 }

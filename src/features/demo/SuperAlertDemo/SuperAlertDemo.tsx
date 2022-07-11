@@ -5,7 +5,7 @@ import SuperButton from '../../../main/ui/common/SuperButton/SuperButton'
 export const SuperAlertDemo = () => {
 	const [displayAlert, setAlertDisplay] = useState<AlertItemType>({variant: undefined, message: ''})
 
-	const showInfoAlert = () => setAlertDisplay({variant: undefined, message: 'This is INFO alert message'})
+	const showInfoAlert = () => setAlertDisplay({variant: 'info', message: 'This is INFO alert message'})
 	const showSuccessAlert = () => setAlertDisplay({variant: 'success', message: 'This is SUCCESS alert message'})
 	const showErrorAlert = () => setAlertDisplay({variant: 'error', message: 'This is ERROR alert message'})
 
