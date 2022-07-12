@@ -19,7 +19,6 @@ import { PATH } from "../../../../utils/path";
 import s from './PacksTable.module.css'
 import { PackType } from '../../../../main/api/packListAPI';
 import Spinner from '../../../../main/ui/common/Spinner/Spinner';
-import { SearchInfo } from './SearchInfo';
 
 
 
@@ -29,13 +28,9 @@ export const PacksTable: FC<PacksTablePropsType> = React.memo(({packs, authUserI
         <PacksTableRow key={pack._id} pack={pack} isOwner={authUserId === pack.user_id}/>
     ))
 
-
     if (isLoading) return <Spinner />
 
     return (
-        <Grid container justifyContent={'center'}>
-            
-      
             <TableContainer component={Paper}>
                 <Table sx={{ minWidth: 500 }} aria-label="custom pagination table">
 
@@ -47,9 +42,7 @@ export const PacksTable: FC<PacksTablePropsType> = React.memo(({packs, authUserI
 
                 </Table>
             </TableContainer>
-
-        </Grid>
-    );
+    )
 })
 
 
@@ -57,8 +50,6 @@ export const PacksTable: FC<PacksTablePropsType> = React.memo(({packs, authUserI
 const PacksTableHead = () => {
     return (
         <TableHead>
-            {/* todo: replace icon to PackFilters */}
-            <SearchInfo />
             <TableRow style={{backgroundColor: '#F9F9FE' }}>
                 <TableCell align="left"> Name</TableCell>
                 <TableCell align="center">Total cards</TableCell>
