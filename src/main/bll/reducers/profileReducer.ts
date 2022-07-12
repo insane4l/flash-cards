@@ -25,6 +25,7 @@ const initialState = {
     isLoading: false
 };
 
+
 export const profileReducer = (
     state: ProfileStateType = initialState,
     action: ProfileActionsTypes
