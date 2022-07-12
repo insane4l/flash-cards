@@ -58,13 +58,13 @@ export const profileActions = {
 //thunks
 export const updateUserInfoTC =
     (name: string, avatar: string | null): BaseThunkType<ProfileActionsTypes> => async (dispatch) => {
-        dispatch(appActions.appSetStatusAC('loading'))
+        dispatch(profileActions.setLoading(true))
 
         try {
             const res = await profileAPI.updateUserInfo(name, avatar)
             if (!res.error) {
                 dispatch(profileActions.setUserData(res.updatedUser))
-
+                dispatch(profileActions.setLoading(false))
             }
 
         } catch (e) {
@@ -75,11 +75,6 @@ export const updateUserInfoTC =
             } else {
                 dispatch(appActions.setAppErrorMessage(`Native error ${err.message}`))
             }
-        }
-        finally {
-            dispatch(appActions.appSetStatusAC('succeeded'))
-
-
         }
     }
 ;
