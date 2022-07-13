@@ -19,6 +19,9 @@ import { PATH } from "../../../../utils/path";
 import s from './PacksTable.module.css'
 import { PackType } from '../../../../main/api/packListAPI';
 import Spinner from '../../../../main/ui/common/Spinner/Spinner';
+import trash from '../../../../assets/icons/delete.png'
+import editt from '../../../../assets/icons/edit.svg'
+import learn from '../../../../assets/icons/package.png'
 
 
 
@@ -104,20 +107,15 @@ const PacksTableRow: FC<PacksTableRowPropsType> = ({pack, isOwner}) => {
 
                 {isOwner
                     ? <>
-                        <SuperButton btnStyle="danger" onClick={() => {
-                            deletePackHandler(pack._id)}}>Delete
-                        </SuperButton>
-                        <SuperButton btnStyle="primary" onClick={() => {
-                            editPackNameHandler(pack._id, pack.name)}}>Edit
-                        </SuperButton> 
+                        <img className={s.active_icon} src={trash} onClick={() => {
+                            deletePackHandler(pack._id)}} alt='delete button' />
+                        <img className={s.active_icon} src={editt} onClick={() => {
+                            editPackNameHandler(pack._id, pack.name)}}/>
                     </>
                     : undefined}
-                    
 
 
-                <SuperButton btnStyle="success"
-                    onClick={() => learnPackHandler(pack._id)}
-                >Learn</SuperButton>
+                <img className={s.active_icon} src={learn}  onClick={() => learnPackHandler(pack._id)}/>
 
             </TableCell>
         </TableRow>
