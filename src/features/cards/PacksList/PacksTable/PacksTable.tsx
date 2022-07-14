@@ -34,7 +34,6 @@ export const PacksTable: FC<PacksTablePropsType> = React.memo(({packs, authUserI
             <Table sx={{minWidth: 500}} aria-label="custom pagination table">
 
                 <PacksTableHead/>
-
                 <TableBody>
                     {tableRows}
                 </TableBody>
