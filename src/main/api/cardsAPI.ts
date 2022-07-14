@@ -7,8 +7,9 @@ export const cardsAPI = {
     addCard(newCard: NewCardDataType) {
         return apiBase.post<NewCardDataType>(`cards/card`, {card: newCard})
     },
-    deleteCard(cardId: string) {
-        return apiBase.delete(`cards/card`, {params: {cardId}})
+    deleteCard(id: string) {
+        return apiBase.delete(`cards/card`, {params: {id}})
+            .then(response => response.data);
     },
     updateCard(_id: string, question: string) {
         return apiBase.put(`cards/card`, {data: {_id, question}})

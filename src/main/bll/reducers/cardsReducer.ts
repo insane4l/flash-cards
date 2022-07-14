@@ -74,22 +74,7 @@ export const getCardsTC = (data: SendCardsQueryParams): BaseThunkType<CardsActio
         dispatch(appActions.setAppStatus('succeeded'))
     }
 }
-export const learnCardTC =
-    (packId: string): BaseThunkType<PacksActionsTypes> => async (dispatch) => {
-        dispatch(appActions.setAppStatus("loading"))
 
-        try {
-            // await packsActions.setLearnPack(packId)
-
-            dispatch(appActions.setAppStatus("succeeded"))
-
-
-        } catch (e: any) {
-            dispatch(appActions.setAppErrorMessage(e.response?.data?.error || e.message))
-            dispatch(appActions.setAppStatus("failed"))
-        }
-    }
-;
 export const addCardTC = (newCard: NewCardDataType): BaseThunkType<CardsActionsTypes> => async (dispatch) => {
     try {
         dispatch(appActions.setAppStatus('loading'))

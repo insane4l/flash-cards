@@ -3,13 +3,12 @@ import React, {FC, useEffect, useState} from "react";
 import {Navigate, useNavigate} from "react-router-dom";
 import {useAppDispatch} from "../../../../main/bll/store";
 import {PATH} from "../../../../utils/path";
-import {learnCardTC, removeCardTC, updateCardTC} from "../../../../main/bll/reducers/cardsReducer";
+import {removeCardTC, updateCardTC} from "../../../../main/bll/reducers/cardsReducer";
 import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
 import Rating from "@mui/material/Rating";
 import StarIcon from "@mui/icons-material/Star";
 import s from "./CardsTable.module.css";
-import learn from "../../../../assets/icons/package.png";
 import edit from "../../../../assets/icons/edit.svg";
 import trash from "../../../../assets/icons/delete.png";
 import ModalWindow from "../../../../main/ui/common/ModalWindow/ModalWindow";
@@ -19,6 +18,7 @@ import SuperButton from "../../../../main/ui/common/SuperButton/SuperButton";
 export const CardsTableRow: FC<CardsTableRowPropsType> = ({card, isOwner}) => {
     const name = card.answer
 
+    const dispatch = useAppDispatch()
     const [editModalMode, setEditModalMode] = useState(false)
     const [deleteModalMode, setDeleteModalMode] = useState(false)
     const [newName, setNewName] = useState(name)
@@ -30,26 +30,18 @@ export const CardsTableRow: FC<CardsTableRowPropsType> = ({card, isOwner}) => {
     const openDelModal = () => setDeleteModalMode(true)
     const closeDelModal = () => setDeleteModalMode(false)
 
-    const navigate = useNavigate()
-    const dispatch = useAppDispatch()
-    const cardsListPath = PATH.cardsList.replace(/:packId/, '')
 
     useEffect(() => {
         (name === newName) ? setBtnDisabled(true) : setBtnDisabled(false)
     }, [name, newName])
 
     const deleteCardHandler = () => {
-        dispatch(removeCardTC('',''))
+        dispatch(removeCardTC(card.cardsPack_id,card._id))
     }
 
     const editCardNameHandler = (cardId: string) => {
         dispatch(updateCardTC(cardId, newName))
         return <Navigate to={'/cards'}/>
-    }
-
-    const learnCardHandler = (cardId: string) => {
-        dispatch(learnCardTC(cardId));
-        navigate(PATH.training + cardId);
     }
 
     return (
@@ -74,7 +66,6 @@ export const CardsTableRow: FC<CardsTableRowPropsType> = ({card, isOwner}) => {
             </TableCell>
             <TableCell style={{width: 150}} align="center">
 
-                <img className={s.active_icon} src={learn} onClick={() => learnCardHandler(card._id)}/>
                 {isOwner
                     ? <>
 
@@ -85,7 +76,7 @@ export const CardsTableRow: FC<CardsTableRowPropsType> = ({card, isOwner}) => {
 
                     : undefined}
 
-                <ModalWindow open={editModalMode} onClose={closeModal} title={'Change pack Name'}>
+                <ModalWindow open={editModalMode} onClose={closeModal} title={'Change сard question & answer'}>
                     <EditableTextLine text={newName} setNewText={setNewName}/>
                     <SuperButton btnStyle="outline_danger" onClick={closeModal}>Cancel</SuperButton>
                     <SuperButton
@@ -93,11 +84,10 @@ export const CardsTableRow: FC<CardsTableRowPropsType> = ({card, isOwner}) => {
                         disabled={btnDisabled}>Save</SuperButton>
                 </ModalWindow>
 
-                <ModalWindow open={deleteModalMode} onClose={closeDelModal} title={'Do you really want to delete pack'}>
+                <ModalWindow open={deleteModalMode} onClose={closeDelModal} title={'Do you really want to delete card'}>
 
                     <SuperButton btnStyle="outline_danger" onClick={closeDelModal}>Cancel</SuperButton>
-                    <SuperButton onClick={() => deleteCardHandler()}
-                    >Delete</SuperButton>
+                    <SuperButton onClick={deleteCardHandler}>Delete</SuperButton>
                 </ModalWindow>
             </TableCell>
         </TableRow>
