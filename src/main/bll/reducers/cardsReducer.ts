@@ -94,6 +94,7 @@ export const removeCardTC = (cardsPack_ID: string, card_ID: string): BaseThunkTy
     try {
         dispatch(appActions.setAppStatus('loading'))
         await cardsAPI.deleteCard(card_ID)
+        await dispatch(getCardsTC({cardsPack_id: cardsPack_ID}))
     } catch (e) {
         const err = e as Error | AxiosError<{ error: string }>
         if (axios.isAxiosError(err)) {
