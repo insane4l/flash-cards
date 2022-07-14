@@ -1,7 +1,8 @@
 import {BaseThunkType, InferActionsTypes} from "../store"
-import {cardsAPI, CardType, SendCardsQueryParams} from "../../api/cardsAPI";
+import {cardsAPI, CardType, NewCardDataType, SendCardsQueryParams} from "../../api/cardsAPI";
 import {appActions} from "./appReducer";
 import axios, {AxiosError} from "axios";
+import {PacksActionsTypes} from "./packsReducer";
 
 const initialState = {
     cards: [] as CardType[],
@@ -73,12 +74,27 @@ export const getCardsTC = (data: SendCardsQueryParams): BaseThunkType<CardsActio
         dispatch(appActions.setAppStatus('succeeded'))
     }
 }
+export const learnCardTC =
+    (packId: string): BaseThunkType<PacksActionsTypes> => async (dispatch) => {
+        dispatch(appActions.setAppStatus("loading"))
 
-export const addCardTC = (cardsPack_id: string, question: string, answer: string): BaseThunkType<CardsActionsTypes> => async (dispatch) => {
+        try {
+            // await packsActions.setLearnPack(packId)
+
+            dispatch(appActions.setAppStatus("succeeded"))
+
+
+        } catch (e: any) {
+            dispatch(appActions.setAppErrorMessage(e.response?.data?.error || e.message))
+            dispatch(appActions.setAppStatus("failed"))
+        }
+    }
+;
+export const addCardTC = (newCard: NewCardDataType): BaseThunkType<CardsActionsTypes> => async (dispatch) => {
     try {
         dispatch(appActions.setAppStatus('loading'))
-        await cardsAPI.addCard(cardsPack_id, question, answer)
-        await dispatch(getCardsTC({cardsPack_id}))
+        await cardsAPI.addCard(newCard)
+        await dispatch(getCardsTC({cardsPack_id: newCard.cardsPack_id}))
     } catch (e) {
         const err = e as Error | AxiosError<{ error: string }>
         if (axios.isAxiosError(err)) {
@@ -89,10 +105,10 @@ export const addCardTC = (cardsPack_id: string, question: string, answer: string
         dispatch(appActions.setAppStatus('succeeded'))
     }
 }
-export const removeCardTC = (cardId: string): BaseThunkType<CardsActionsTypes> => async (dispatch) => {
+export const removeCardTC = (cardsPack_ID: string, card_ID: string): BaseThunkType<CardsActionsTypes> => async (dispatch) => {
     try {
         dispatch(appActions.setAppStatus('loading'))
-        await cardsAPI.deleteCard(cardId)
+        await cardsAPI.deleteCard(card_ID)
     } catch (e) {
         const err = e as Error | AxiosError<{ error: string }>
         if (axios.isAxiosError(err)) {
