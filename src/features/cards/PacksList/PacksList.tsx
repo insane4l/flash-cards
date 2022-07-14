@@ -7,6 +7,7 @@ import {packsActions, requestPacksListTC} from "../../../main/bll/reducers/packs
 import { PacksTable } from './PacksTable/PacksTable'
 import Paginator from '../../../main/ui/common/Paginator/Paginator'
 import { PacksFilters } from './PacksFilters/PacksFilters'
+import {AddNewPack} from "./AddNewPack/AddNewPack";
 
 export const PacksList = () => {
     const dispatch = useAppDispatch()
@@ -41,8 +42,9 @@ export const PacksList = () => {
     return (
         <div className={s.wrapper}>
             <PacksFilters />
-            <div className={s.packList}>
 
+            <div className={s.packList}>
+                <AddNewPack />
                 <PacksTable packs={cardPacks} authUserId={authUserId} isLoading={appStatus === 'loading'} />
 
                 {(cardPacksTotalCount > pageSize) 

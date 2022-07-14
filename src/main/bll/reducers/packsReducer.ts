@@ -154,8 +154,8 @@ export const addNewPackTC =
             await packsAPI.addNewPack( name)
             try {
 
-                // dispatch(setMyPacksListTC())
-                dispatch(appActions.setAppStatus("succeeded"))
+                 dispatch(requestPacksListTC())
+
 
             } catch (e: any) {
                 dispatch( appActions.setAppErrorMessage( e.response?.data?.error || e.message ) )

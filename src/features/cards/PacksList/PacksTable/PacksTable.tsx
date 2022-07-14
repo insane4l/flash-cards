@@ -6,7 +6,7 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import {Navigate, NavLink, useNavigate} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
 import {useAppDispatch} from "../../../../main/bll/store";
 import {deletePackTC, editPackTC, learnPackTC,} from "../../../../main/bll/reducers/packsReducer";
 import {PATH} from "../../../../utils/path";
@@ -18,7 +18,7 @@ import edit from '../../../../assets/icons/edit.svg'
 import learn from '../../../../assets/icons/package.png'
 import ModalWindow from "../../../../main/ui/common/ModalWindow/ModalWindow";
 import SuperButton from "../../../../main/ui/common/SuperButton/SuperButton";
-import EditableTextLine from "../../../../main/ui/common/EditableTextLine/EditableTextLine";
+import SuperInputText from "../../../../main/ui/common/SuperInputText/SuperInputText";
 
 
 export const PacksTable: FC<PacksTablePropsType> = React.memo(({packs, authUserId, isLoading}) => {
@@ -66,7 +66,7 @@ const PacksTableRow: FC<PacksTableRowPropsType> = ({pack, isOwner}) => {
 
     const [editModalMode, setEditModalMode] = useState(false)
     const [deleteModalMode, setDeleteModalMode] = useState(false)
-    const [newName, setNewName] = useState(name)
+    const [newName, setNewName] = useState('')
     const [btnDisabled, setBtnDisabled] = useState(true)
 
     const openModal = () => setEditModalMode(true)
@@ -80,7 +80,7 @@ const PacksTableRow: FC<PacksTableRowPropsType> = ({pack, isOwner}) => {
     const cardsListPath = PATH.cardsList.replace(/:packId/, '')
 
     useEffect(() => {
-        (name === newName) ? setBtnDisabled(true) : setBtnDisabled(false)
+        ( newName===''||newName===name) ? setBtnDisabled(true) : setBtnDisabled(false)
     }, [name, newName])
     const deletePackHandler = (packId: string) => {
         dispatch(deletePackTC(packId))
@@ -88,7 +88,8 @@ const PacksTableRow: FC<PacksTableRowPropsType> = ({pack, isOwner}) => {
 
     const editPackNameHandler = (packId: string) => {
         dispatch(editPackTC(packId, newName))
-        return <Navigate to={'/cards'}/>
+
+
     }
 
     const learnPackHandler = (packId: string) => {
@@ -128,7 +129,7 @@ const PacksTableRow: FC<PacksTableRowPropsType> = ({pack, isOwner}) => {
                     : undefined}
 
                 <ModalWindow open={editModalMode} onClose={closeModal} title={'Change pack Name'}>
-                    <EditableTextLine text={newName} setNewText={setNewName}/>
+                    <SuperInputText value={newName} onChangeText={setNewName} placeholder={'Enter new pack Name'}/>
                     <SuperButton btnStyle="outline_danger" onClick={closeModal}>Cancel</SuperButton>
                     <SuperButton onClick={() => editPackNameHandler(pack._id)}
                                  disabled={btnDisabled}>Save</SuperButton>
