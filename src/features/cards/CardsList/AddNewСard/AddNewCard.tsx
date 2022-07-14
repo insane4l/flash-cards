@@ -5,12 +5,12 @@ import {addCardTC} from "../../../../main/bll/reducers/cardsReducer";
 import {NewCardDataType} from "../../../../main/api/cardsAPI";
 
 export const AddNewCard = () => {
-    // const _id = useAppSelector(state => state.cards.cardsPack_id)
+     const id = useAppSelector(state => state.packs.selectedPackId)
     const dispatch = useAppDispatch()
 
     const addNewCardHandler = () => {
         const newCard: NewCardDataType = {
-            cardsPack_id: "62d001a826bfe217bce50d1f",
+            cardsPack_id: id,
             question: '',
             answer: ''
         }

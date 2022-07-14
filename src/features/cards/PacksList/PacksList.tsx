@@ -41,7 +41,7 @@ export const PacksList = () => {
 
     return (
         <div className={s.wrapper}>
-            <AddNewPack/>
+
             <PacksFilters />
 
             <div className={s.packList}>
