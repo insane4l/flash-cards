@@ -8,6 +8,7 @@ import { PacksTable } from './PacksTable/PacksTable'
 import Paginator from '../../../main/ui/common/Paginator/Paginator'
 import { PacksFilters } from './PacksFilters/PacksFilters'
 import {AddNewPack} from "./AddNewPack/AddNewPack";
+import Spinner from '../../../main/ui/common/Spinner/Spinner'
 
 export const PacksList = () => {
     const dispatch = useAppDispatch()
@@ -37,6 +38,8 @@ export const PacksList = () => {
         dispatch( packsActions.setCurrentPage(pageNum) )
     }
 
+
+
     if (!isLoggedIn) return <Navigate to={PATH.login}/>
 
     return (
@@ -44,19 +47,30 @@ export const PacksList = () => {
 
             <PacksFilters />
 
-            <div className={s.packList}>
-                <AddNewPack />
-                <PacksTable packs={cardPacks} authUserId={authUserId} isLoading={appStatus === 'loading'} />
+            {(appStatus === 'loading')
+                ? <div className={s.spinnerWrapper}><Spinner/></div>
 
-                {(cardPacksTotalCount > pageSize) 
-                    && <Paginator 
-                            currentPage={currentPage} 
-                            totalItemsCount={cardPacksTotalCount} 
-                            pageSize={pageSize} 
-                            onPageSelected={onPageChangedHandler} />
-                }
-            </div>
+                : <div className={s.packsList}>
 
+                    <div className={s.addNewPack}>
+                        <AddNewPack />
+                    </div>
+                    
+                    <div className={s.packsTable}>
+                        <PacksTable 
+                            packs={cardPacks}
+                            authUserId={authUserId} />
+                    </div>
+
+                    {(cardPacksTotalCount > pageSize) 
+                        && <Paginator 
+                                currentPage={currentPage} 
+                                totalItemsCount={cardPacksTotalCount} 
+                                pageSize={pageSize} 
+                                onPageSelected={onPageChangedHandler} />
+                    }
+                </div>
+            }
         </div>
     )
 }

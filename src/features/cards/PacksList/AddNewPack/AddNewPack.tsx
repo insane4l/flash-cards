@@ -4,39 +4,46 @@ import {useAppDispatch} from '../../../../main/bll/store'
 import SuperButton from '../../../../main/ui/common/SuperButton/SuperButton'
 import ModalWindow from "../../../../main/ui/common/ModalWindow/ModalWindow";
 import SuperInputText from "../../../../main/ui/common/SuperInputText/SuperInputText";
+import s from './AddNewPack.module.css'
 
 export const AddNewPack = () => {
 
-    const [newNamePack, setNewNamePack] = useState('')
+    const [newPackName, setNewPackName] = useState('')
     const [addPackModal, setAddPackModal] = useState(false)
     const [btnDisabled, setBtnDisabled] = useState(true)
 
     const openAddModal = () => setAddPackModal(true)
-    const closeAddModal = () => setAddPackModal(false)
+    const closeAddModal = () => {
+        setAddPackModal(false)
+        setNewPackName('')
+    }
 
     const dispatch = useAppDispatch()
 
     useEffect(() => {
-        (newNamePack === '') ? setBtnDisabled(true) : setBtnDisabled(false)
-    }, [newNamePack])
-    const addNewPackHandler = () => {
-        dispatch(addNewPackTC(newNamePack))
+        (newPackName === '') ? setBtnDisabled(true) : setBtnDisabled(false)
+    }, [newPackName])
 
-        closeAddModal()  //wtf?
+
+    const addNewPackHandler = () => {
+        dispatch(addNewPackTC(newPackName))
+            
+        closeAddModal()  //wtf? todo: WTF wtf??? .then(() => closeAddModal()) ???
     }
 
     return (
 
-        <div>
+        <div className={s.wrapper}>
 
             <ModalWindow open={addPackModal} onClose={closeAddModal} title={' Add new pack'}>
 
-                <SuperInputText value={newNamePack} onChangeText={setNewNamePack} placeholder={'Enter pack name'}/>
+                <SuperInputText value={newPackName} onChangeText={setNewPackName} placeholder={'Enter pack name'}/>
                 <SuperButton btnStyle="outline_danger" onClick={closeAddModal}>Cancel</SuperButton>
                 <SuperButton onClick={addNewPackHandler} disabled={btnDisabled}
                 >Save</SuperButton>
             </ModalWindow>
-            <SuperButton btnStyle="primary" onClick={openAddModal}> Add pack</SuperButton>
+
+            <SuperButton className={s.addPackBtn} btnStyle="primary" onClick={openAddModal}>+</SuperButton>
         </div>
     )
 }

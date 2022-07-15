@@ -80,6 +80,7 @@ input:-webkit-autofill:focus {
 .container {
     position: relative;
     margin: 0 50px;
+    color: #f4d4ff;
 }
 @media screen and (min-width: 1200px){
     .container {

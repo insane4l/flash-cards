@@ -1,0 +1,12 @@
+.addPackBtn {
+    width: 100%;
+    font-size: 18px;
+    font-weight: 600;
+    background-color: #6b15b7;
+    border-color: #6b15b7;
+}
+
+.addPackBtn:hover {
+    background-color: #7815cf;
+    border-color: #7815cf;
+}
