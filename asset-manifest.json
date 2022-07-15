@@ -1,22 +1,29 @@
 {
   "files": {
-    "main.css": "/flash-cards/static/css/main.6e4b4c10.css",
-    "main.js": "/flash-cards/static/js/main.42f6ee62.js",
+    "main.css": "/flash-cards/static/css/main.a8addb2b.css",
+    "main.js": "/flash-cards/static/js/main.8f84fdc7.js",
     "static/js/787.28035159.chunk.js": "/flash-cards/static/js/787.28035159.chunk.js",
     "static/media/callout404.png": "/flash-cards/static/media/callout404.28043e3c62d095079cdd.png",
+    "static/media/aboutLearn.png": "/flash-cards/static/media/aboutLearn.1f79275934f5fee0b92a.png",
     "static/media/astronaut404.png": "/flash-cards/static/media/astronaut404.2760983ea0614a474854.png",
+    "static/media/package.png": "/flash-cards/static/media/package.2a9c112d00fdb4266089.png",
+    "static/media/edit.svg": "/flash-cards/static/media/edit.c1e1a20f63f9428b8121d7d78182f7db.svg",
+    "static/media/main_logo_icon.svg": "/flash-cards/static/media/main_logo_icon.d36f4aca3bac1bbcf684fb3ea181f7b2.svg",
     "static/media/pencil.svg": "/flash-cards/static/media/pencil.3b9367d420e8cb07e22db10b6d1b4e62.svg",
-    "static/media/paginator-left-arrow.svg": "/flash-cards/static/media/paginator-left-arrow.2a41a483ba7f11f7ab808fe68780e596.svg",
-    "static/media/paginator-right-arrow.svg": "/flash-cards/static/media/paginator-right-arrow.e4ef60860d026b05d570eb904662db3f.svg",
+    "static/media/paginator-left-arrow.svg": "/flash-cards/static/media/paginator-left-arrow.8525d04dd77df02a8ea30fce9e4577f2.svg",
+    "static/media/paginator-right-arrow.svg": "/flash-cards/static/media/paginator-right-arrow.f841b542d195c7b13778e9fc9d54d778.svg",
     "index.html": "/flash-cards/index.html",
     "static/media/hide_pass.svg": "/flash-cards/static/media/hide_pass.a0f78739c8ba88c84861aff52f017ed2.svg",
+    "static/media/add-photo-icon.svg": "/flash-cards/static/media/add-photo-icon.45c01ac057d85fceb6c69513a0fe47bb.svg",
+    "static/media/exit.svg": "/flash-cards/static/media/exit.ad41662461dbbc333a04c2a5145a1290.svg",
     "static/media/show_pass.svg": "/flash-cards/static/media/show_pass.6b05b371fdeb813940d523864aca7812.svg",
-    "main.6e4b4c10.css.map": "/flash-cards/static/css/main.6e4b4c10.css.map",
-    "main.42f6ee62.js.map": "/flash-cards/static/js/main.42f6ee62.js.map",
+    "static/media/more_info.svg": "/flash-cards/static/media/more_info.579c68a90875836b14d6cbf52ad69e9b.svg",
+    "main.a8addb2b.css.map": "/flash-cards/static/css/main.a8addb2b.css.map",
+    "main.8f84fdc7.js.map": "/flash-cards/static/js/main.8f84fdc7.js.map",
     "787.28035159.chunk.js.map": "/flash-cards/static/js/787.28035159.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.6e4b4c10.css",
-    "static/js/main.42f6ee62.js"
+    "static/css/main.a8addb2b.css",
+    "static/js/main.8f84fdc7.js"
   ]
 }
