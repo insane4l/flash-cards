@@ -1,4 +1,4 @@
-import {CardType} from "../../../../main/api/cardsAPI";
+import {CardType, UpdateCardModelType} from "../../../../main/api/cardsAPI";
 import React, {FC, useEffect, useState} from "react";
 import {Navigate, useNavigate} from "react-router-dom";
 import {useAppDispatch} from "../../../../main/bll/store";
@@ -16,12 +16,14 @@ import EditableTextLine from "../../../../main/ui/common/EditableTextLine/Editab
 import SuperButton from "../../../../main/ui/common/SuperButton/SuperButton";
 
 export const CardsTableRow: FC<CardsTableRowPropsType> = ({card, isOwner}) => {
-    const name = card.answer
+    const answer = card.answer
+    const question = card.question
 
     const dispatch = useAppDispatch()
     const [editModalMode, setEditModalMode] = useState(false)
     const [deleteModalMode, setDeleteModalMode] = useState(false)
-    const [newName, setNewName] = useState(name)
+    const [newQuestion, setNewQuestion] = useState(question)
+    const [newAnswer, setNewAnswer] = useState(answer)
     const [btnDisabled, setBtnDisabled] = useState(true)
 
     const openModal = () => setEditModalMode(true)
@@ -32,16 +34,23 @@ export const CardsTableRow: FC<CardsTableRowPropsType> = ({card, isOwner}) => {
 
 
     useEffect(() => {
-        (name === newName) ? setBtnDisabled(true) : setBtnDisabled(false)
-    }, [name, newName])
+        (question === newQuestion) ? setBtnDisabled(true) : setBtnDisabled(false)
+    }, [question, newQuestion])
+    useEffect(() => {
+        (answer === newAnswer) ? setBtnDisabled(true) : setBtnDisabled(false)
+    }, [answer, newAnswer])
 
     const deleteCardHandler = () => {
-        dispatch(removeCardTC(card.cardsPack_id,card._id))
+        dispatch(removeCardTC(card.cardsPack_id, card._id))
     }
 
-    const editCardNameHandler = (cardId: string) => {
-        dispatch(updateCardTC(cardId, newName))
-        return <Navigate to={'/cards'}/>
+    const editCardNameHandler = () => {
+        const cardUpdateModel: UpdateCardModelType = {
+            _id: card._id,
+            question: newQuestion,
+            answer: newAnswer,
+        };
+        dispatch(updateCardTC(card.cardsPack_id, cardUpdateModel))
     }
 
     return (
@@ -77,10 +86,11 @@ export const CardsTableRow: FC<CardsTableRowPropsType> = ({card, isOwner}) => {
                     : undefined}
 
                 <ModalWindow open={editModalMode} onClose={closeModal} title={'Change сard question & answer'}>
-                    <EditableTextLine text={newName} setNewText={setNewName}/>
+                    <EditableTextLine text={newQuestion} setNewText={setNewQuestion}/>
+                    <EditableTextLine text={newAnswer} setNewText={setNewAnswer}/>
                     <SuperButton btnStyle="outline_danger" onClick={closeModal}>Cancel</SuperButton>
                     <SuperButton
-                        onClick={() => editCardNameHandler(card._id)}
+                        onClick={editCardNameHandler}
                         disabled={btnDisabled}>Save</SuperButton>
                 </ModalWindow>
 

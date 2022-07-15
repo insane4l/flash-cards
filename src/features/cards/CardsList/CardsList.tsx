@@ -11,7 +11,7 @@ import { packsActions } from "../../../main/bll/reducers/packsReducer";
 import SuperButton from "../../../main/ui/common/SuperButton/SuperButton";
 import { CardsTable } from "./CardsTable/CardsTable";
 import { CardsSearchInput } from "./CardsSearchInput/CardsSearchInput";
-
+import backLogo from "../../../assets/icons/backLOGO.png"
 
 
 export const CardsList = () => {
@@ -22,7 +22,7 @@ export const CardsList = () => {
     const selectedPackId = useAppSelector(state => state.packs.selectedPackId)
     const appStatus = useAppSelector(state => state.app.status)
     const cards = useAppSelector(state => state.cards.cards)
-    
+
     // const cardsTotalCount = useAppSelector(state => state.cards.cardsTotalCount)
     const page = 1; // todo: redux state
 
@@ -58,12 +58,10 @@ export const CardsList = () => {
 
     return (
         <div className={s.mainContainer}>
-            {appStatus === 'succeeded' 
+            {appStatus === 'succeeded'
                 ? <Paper className={s.container} style={{padding: '15px'}}>
 
-                    <SuperButton className={s.btnsBack} onClick={backHandler} btnStyle="primary">
-                        Go Back
-                    </SuperButton>
+                    <img src={backLogo} className={s.addPackBtn} onClick={backHandler}/>
 
                     <div style={{marginTop: '20px'}}>
                         <CardsSearchInput />

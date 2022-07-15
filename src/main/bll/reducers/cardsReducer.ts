@@ -1,5 +1,5 @@
 import {BaseThunkType, InferActionsTypes} from "../store"
-import {cardsAPI, CardType, NewCardDataType, SendCardsQueryParams} from "../../api/cardsAPI";
+import {cardsAPI, CardType, NewCardDataType, SendCardsQueryParams, UpdateCardModelType} from "../../api/cardsAPI";
 import {appActions} from "./appReducer";
 import axios, {AxiosError} from "axios";
 import {PacksActionsTypes} from "./packsReducer";
@@ -105,10 +105,11 @@ export const removeCardTC = (cardsPack_ID: string, card_ID: string): BaseThunkTy
         dispatch(appActions.setAppStatus('succeeded'))
     }
 }
-export const updateCardTC = (cardId: string, question: string): BaseThunkType<CardsActionsTypes> => async (dispatch) => {
+export const updateCardTC = (cardsPack_ID: string,cardModel:UpdateCardModelType): BaseThunkType<CardsActionsTypes> => async (dispatch) => {
     try {
         dispatch(appActions.setAppStatus('loading'))
-        await cardsAPI.updateCard(cardId, question)
+        await cardsAPI.updateCard(cardModel)
+        await dispatch(getCardsTC({cardsPack_id: cardsPack_ID}))
     } catch (e) {
         const err = e as Error | AxiosError<{ error: string }>
         if (axios.isAxiosError(err)) {

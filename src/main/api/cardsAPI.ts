@@ -11,8 +11,9 @@ export const cardsAPI = {
         return apiBase.delete(`cards/card`, {params: {id}})
             .then(response => response.data);
     },
-    updateCard(_id: string, question: string) {
-        return apiBase.put(`cards/card`, {data: {_id, question}})
+    updateCard(cardModel: UpdateCardModelType) {
+        return apiBase.put(`cards/card`, {card: cardModel})
+            .then(response => response.data);
     }
 }
 
@@ -59,4 +60,5 @@ export type NewCardDataType = {
     questionVideo?: string
     answerVideo?: string
 };
+export type UpdateCardModelType = {_id: string} & Partial<Omit<CardType, "_id">>;
 export type SortType = '0updated' | '1updated'
