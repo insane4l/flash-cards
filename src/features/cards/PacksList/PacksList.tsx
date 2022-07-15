@@ -48,7 +48,7 @@ export const PacksList = () => {
             <PacksFilters />
 
             {(appStatus === 'loading')
-                ? <div className={s.spinnerWrapper}><Spinner/></div>
+                ? <div className={s.spinnerWrapper}></div>
 
                 : <div className={s.packsList}>
 

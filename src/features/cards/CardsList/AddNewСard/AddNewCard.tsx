@@ -11,7 +11,7 @@ export const AddNewCard = () => {
     const [newCardQuestion, setNewCardQuestion] = useState('')
     const [newCardAnswer, setNewCardAnswer] = useState('')
 
-    const [addPackModal, setAddСardModal] = useState(false)
+    const [addСardModal, setAddСardModal] = useState(false)
     const [btnDisabled, setBtnDisabled] = useState(true)
 
     const openAddModal = () => setAddСardModal(true)
@@ -41,7 +41,7 @@ export const AddNewCard = () => {
     }, [newCardAnswer])
     return (
         <>
-            <ModalWindow open={addPackModal} onClose={closeAddModal} title={' Add new pack'}>
+            <ModalWindow open={addСardModal} onClose={closeAddModal} title={' Add new pack'}>
 
                 <SuperInputText value={newCardQuestion} onChangeText={setNewCardQuestion}
                                 placeholder={'Enter card question'}/>
