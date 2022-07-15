@@ -1,16 +1,17 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import Paper from "@mui/material/Paper";
-import {useNavigate, useParams} from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import s from './CardsList.module.css'
-import {useAppDispatch, useAppSelector} from "../../../main/bll/store";
+import { useAppDispatch, useAppSelector } from "../../../main/bll/store";
 import { cardsActions, getCardsTC } from "../../../main/bll/reducers/cardsReducer";
 import Spinner from "../../../main/ui/common/Spinner/Spinner";
 import { Navigate } from 'react-router-dom'
 import { PATH } from '../../../utils/path'
 import { packsActions } from "../../../main/bll/reducers/packsReducer";
+import SuperButton from "../../../main/ui/common/SuperButton/SuperButton";
 import { CardsTable } from "./CardsTable/CardsTable";
 import { CardsSearchInput } from "./CardsSearchInput/CardsSearchInput";
-import backLogo from "../../../assets/icons/backLOGO.png"
+
 
 
 export const CardsList = () => {
@@ -19,9 +20,10 @@ export const CardsList = () => {
 
     const isLoggedIn = useAppSelector(state => state.login.isLoggedIn)
     const selectedPackId = useAppSelector(state => state.packs.selectedPackId)
+    const selectedPackName = useAppSelector(state => state.packs.selectedPackName)
     const appStatus = useAppSelector(state => state.app.status)
     const cards = useAppSelector(state => state.cards.cards)
-
+    
     // const cardsTotalCount = useAppSelector(state => state.cards.cardsTotalCount)
     const page = 1; // todo: redux state
 
@@ -36,6 +38,7 @@ export const CardsList = () => {
     useEffect(() => {
         return () => {
             dispatch( packsActions.setSelectedPackId('') )
+            dispatch( packsActions.setSelectedPackName('') )
             dispatch( cardsActions.setCards([], 0) )
         }
     }, [])
@@ -57,10 +60,15 @@ export const CardsList = () => {
 
     return (
         <div className={s.mainContainer}>
-            {appStatus === 'succeeded'
-                ? <Paper className={s.container} style={{padding: '15px'}}>
+            {appStatus === 'loading'
+                ? <div className={s.spinnerWrapper}><Spinner/></div>
+                : <Paper className={s.container} style={{padding: '15px'}}>
 
-                    <img src={backLogo} className={s.addPackBtn} onClick={backHandler}/>
+                    <SuperButton className={s.btnsBack} onClick={backHandler} btnStyle="primary">
+                        Go Back
+                    </SuperButton>
+
+                    <h1>{selectedPackName}</h1>
 
                     <div style={{marginTop: '20px'}}>
                         <CardsSearchInput />
@@ -68,8 +76,6 @@ export const CardsList = () => {
 
                     <CardsTable cards={cards} selectedPackId={selectedPackId} page={page}/>
                 </Paper>
-
-                : <Spinner/>
             }
         </div>
     )

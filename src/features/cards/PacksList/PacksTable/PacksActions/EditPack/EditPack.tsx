@@ -32,9 +32,15 @@ export const EditPack: FC<EditPackPropsType> = ({packName, packId}) => {
 
             <ModalWindow open={editModalMode} onClose={closeModal} title={'Change pack Name'}>
                 <SuperInputText value={newName} onChangeText={setNewName} placeholder={'Enter new pack Name'}/>
-                <SuperButton btnStyle="outline_danger" onClick={closeModal}>Cancel</SuperButton>
-                <SuperButton onClick={editPackNameHandler}
-                                disabled={(newName === '' || newName === packName)}>Save</SuperButton>
+
+                <div className={s.modalBtnsWrapper}>
+                    <SuperButton btnStyle="primary" onClick={closeModal}>Cancel</SuperButton>
+                    <SuperButton 
+                        btnStyle="success" onClick={editPackNameHandler}
+                        disabled={(newName === '' || newName === packName)}>
+                        Save
+                    </SuperButton>
+                </div>
             </ModalWindow>
         </>
     )

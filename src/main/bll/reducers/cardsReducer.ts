@@ -2,7 +2,7 @@ import {BaseThunkType, InferActionsTypes} from "../store"
 import {cardsAPI, CardType, NewCardDataType, SendCardsQueryParams, UpdateCardModelType} from "../../api/cardsAPI";
 import {appActions} from "./appReducer";
 import axios, {AxiosError} from "axios";
-import {PacksActionsTypes} from "./packsReducer";
+import {PacksActionsTypes, requestPackNameTC} from "./packsReducer";
 
 const initialState = {
     cards: [] as CardType[],
@@ -63,6 +63,9 @@ export const getCardsTC = (data: SendCardsQueryParams): BaseThunkType<CardsActio
         dispatch(appActions.setAppStatus('loading'))
         dispatch(cardsActions.setCards([], 0))
         const res = await cardsAPI.getCards(data)
+
+        await dispatch(requestPackNameTC(res.data.packUserId, data.cardsPack_id))
+
         dispatch(cardsActions.setCards(res.data.cards, res.data.cardsTotalCount))
     } catch (e) {
         const err = e as Error | AxiosError<{ error: string }>

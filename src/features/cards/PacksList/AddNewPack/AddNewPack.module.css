@@ -10,3 +10,15 @@
     background-color: #7815cf;
     border-color: #7815cf;
 }
+
+.modalBtnsWrapper {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.modalBtnsWrapper button {
+    margin-right: 20px;
+}
+.modalBtnsWrapper button:nth-last-child(1) {
+    margin-right: 0;
+}

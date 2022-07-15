@@ -1,4 +1,6 @@
-.addPackBtn {
-   cursor: pointer;
-   width: 50px;
+.spinnerWrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 150px;
 }

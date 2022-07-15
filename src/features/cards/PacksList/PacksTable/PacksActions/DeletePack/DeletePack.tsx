@@ -6,7 +6,7 @@ import SuperButton from '../../../../../../main/ui/common/SuperButton/SuperButto
 import trash from '../../../../../../assets/icons/delete.png'
 import s from '../PacksActions.module.css'
 
-export const DeletePack: FC<DeletePackPropsType> = ({packId}) => {
+export const DeletePack: FC<DeletePackPropsType> = ({packId, packName}) => {
 
     const dispatch = useAppDispatch()
     
@@ -16,7 +16,7 @@ export const DeletePack: FC<DeletePackPropsType> = ({packId}) => {
     const openDelModal = () => setDeleteModalMode(true)
     const closeDelModal = () => setDeleteModalMode(false)
     
-    const deletePackHandler = (packId: string) => {
+    const deletePackHandler = () => {
         dispatch(deletePackTC(packId))
     }
 
@@ -24,11 +24,17 @@ export const DeletePack: FC<DeletePackPropsType> = ({packId}) => {
         <>
             <img className={`${s.action_icon} ${s.action_delete}`} src={trash} onClick={openDelModal} alt='delete' />
 
-            <ModalWindow open={deleteModalMode} onClose={closeDelModal} title={'Do you really want to delete pack'}>
+            <ModalWindow open={deleteModalMode} onClose={closeDelModal} title={`Do you really want to delete "${packName}"?`}>
+                <div className={s.modalBtnsWrapper}>
+                    <SuperButton btnStyle="primary" onClick={closeDelModal}>
+                        Cancel
+                    </SuperButton>
 
-                <SuperButton btnStyle="outline_danger" onClick={closeDelModal}>Cancel</SuperButton>
-                <SuperButton onClick={() => deletePackHandler(packId)}
-                >Delete</SuperButton>
+                    <SuperButton btnStyle="danger" onClick={deletePackHandler}>
+                        Delete
+                    </SuperButton>
+                </div>
+
             </ModalWindow>
         </>
     )
@@ -37,4 +43,5 @@ export const DeletePack: FC<DeletePackPropsType> = ({packId}) => {
 
 type DeletePackPropsType = {
     packId: string
+    packName: string
 }

@@ -35,15 +35,20 @@ export const AddNewPack = () => {
 
         <div className={s.wrapper}>
 
+            <SuperButton className={s.addPackBtn} btnStyle="primary" onClick={openAddModal}>+</SuperButton>
+
             <ModalWindow open={addPackModal} onClose={closeAddModal} title={' Add new pack'}>
 
                 <SuperInputText value={newPackName} onChangeText={setNewPackName} placeholder={'Enter pack name'}/>
-                <SuperButton btnStyle="outline_danger" onClick={closeAddModal}>Cancel</SuperButton>
-                <SuperButton onClick={addNewPackHandler} disabled={btnDisabled}
-                >Save</SuperButton>
+
+                <div className={s.modalBtnsWrapper}>
+                    <SuperButton btnStyle="primary" onClick={closeAddModal}>Cancel</SuperButton>
+                    <SuperButton btnStyle="success" onClick={addNewPackHandler} disabled={btnDisabled}>
+                        Save
+                    </SuperButton>
+                </div>
             </ModalWindow>
 
-            <SuperButton className={s.addPackBtn} btnStyle="primary" onClick={openAddModal}>+</SuperButton>
         </div>
     )
 }
