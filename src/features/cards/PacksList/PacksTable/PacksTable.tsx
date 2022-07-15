@@ -25,7 +25,13 @@ export const PacksTable: FC<PacksTablePropsType> = React.memo(({packs, authUserI
                 <PacksTableHead/>
                 
                 <TableBody>
+
+                    {(packs.length < 1)
+						&& <TableCell align="left">Packs list is empty</TableCell>
+					}
+
                     {tableRows}
+
                 </TableBody>
 
             </Table>

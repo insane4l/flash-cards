@@ -11,3 +11,15 @@
 .action_icon.action_delete {
     margin-right: 0;
 }
+
+.modalBtnsWrapper {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.modalBtnsWrapper button {
+    margin-right: 20px;
+}
+.modalBtnsWrapper button:nth-last-child(1) {
+    margin-right: 0;
+}

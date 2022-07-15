@@ -12,8 +12,8 @@ export const PacksActions: FC<PacksActionsPropsType> = React.memo( ({ isOwner, p
             <LearnPack packId={packId} />
             {isOwner 
                 && <>
-                    <EditPack packId={packId} packName={packName}/>
-                    <DeletePack packId={packId} />
+                    <EditPack packId={packId} packName={packName} />
+                    <DeletePack packId={packId} packName={packName} />
                 </>
             }
         </div>
