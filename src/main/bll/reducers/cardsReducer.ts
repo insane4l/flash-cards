@@ -39,6 +39,14 @@ export const cardsReducer = (state: CardsStateType = initialState, action: Cards
         //                 ? {...card, question: action.question}
         //                 : card)
         //     }
+        case "cards/CARD/UPDATE-CARD-GRADE":
+            return {
+                ...state,
+                cards: state.cards
+                    .map(card => card._id === action.cardId
+                        ? {...card, grade: action.grade, shots: card.shots + 1}
+                        : card)
+            }
         default:
             return state
     }
@@ -54,7 +62,10 @@ export const cardsActions = {
     // ),
     // deleteCard: (cardId: string) => (
     //     {type: "cards/CARD/DELETE-CARD", cardId} as const
-    // )
+    // ),
+    updateCardGrade: (cardId: string, grade: number) => (
+        {type: "cards/CARD/UPDATE-CARD-GRADE", cardId, grade} as const
+    )
 }
 
 //thunk
@@ -122,6 +133,28 @@ export const updateCardTC = (cardId: string, question: string): BaseThunkType<Ca
         dispatch(appActions.setAppStatus('succeeded'))
     }
 }
+
+
+export const updateCardGradeTC = (cardId: string, grade: number): BaseThunkType<CardsActionsTypes> => async (dispatch) => {
+    try {
+        dispatch(appActions.setAppStatus('loading'))
+
+        const res = await cardsAPI.updateCardGrade(cardId, grade)
+
+        dispatch( cardsActions.updateCardGrade(res.updatedGrade.card_id, res.updatedGrade.grade) )
+
+    } catch (e) {
+        const err = e as Error | AxiosError<{ error: string }>
+        if (axios.isAxiosError(err)) {
+            const error = err.response?.data ? err.response.data.error : err.message
+            dispatch(appActions.setAppErrorMessage(error))
+        }
+    } finally {
+        dispatch(appActions.setAppStatus('succeeded'))
+    }
+}
+
+
 
 
 //types

@@ -13,6 +13,9 @@ export const cardsAPI = {
     },
     updateCard(_id: string, question: string) {
         return apiBase.put(`cards/card`, {data: {_id, question}})
+    },
+    updateCardGrade(card_id: string, grade: number) {
+        return apiBase.put<UpgradeCardGradeResponseType>(`cards/grade`, {card_id, grade}).then(res => res.data)
     }
 }
 
@@ -60,3 +63,21 @@ export type NewCardDataType = {
     answerVideo?: string
 };
 export type SortType = '0updated' | '1updated'
+
+type UpgradeCardGradeResponseType = {
+    token: string
+    tokenDeathTime: number
+    updatedGrade: UpgratedGradeType
+}
+type UpgratedGradeType = {
+    card_id: string
+    cardsPack_id: string
+    created: string
+    grade: number
+    more_id: string
+    shots: number
+    updated: string
+    user_id: string
+    __v: number
+    _id: string
+}
