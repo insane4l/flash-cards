@@ -1,46 +1,37 @@
-# Getting Started with Create React App
+## Flashcards for Learning
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Flashcards for Learning is a team work project aimed at helping users learn and memorize information effectively using digital flashcards. This repository contains the source code and project files for the application.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+Create and manage flashcards for different subjects or topics.
+- Add questions and answers to each flashcard.
+-  Organize flashcards into decks for easy categorization.
+-  Study mode to test your knowledge by flipping through the flashcards.
+-  Track your progress and performance with statistics.- Customize the appearance and settings of the flashcards.
 
-### `npm start`
+## Technologies Used
+Flashcards for Learning web application is built using the following technologies:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+ReactTS: A TypeScript library for building user interfaces.
+<p>React Router: A routing library for React applications.</p>
+<p>Redux: A predictable state container for JavaScript applications.</p>
+<p>Redux Thunk: A middleware for Redux that allows handling asynchronous actions.</p>
+<p>email-js: JavaScript library  to easily send emails using client-side code. It provides a simple and straightforward way to send emails from web applications without the need for a server-side backend.</p>
+<p>formik: Form library for React.</p>
+<p>Axios: A promise-based HTTP client for making API requests.</p>
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Getting Started
+To get started with the Flashcards for Learning project, follow these steps:
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. Clone the repository (card backend): https://github.com/IgnatZakalinsky/cards-nya-back-2-0
+2. Start the development server:      npm start
+3. Clone the repository( frontend):   git clone https://github.com/insane4l/flash-cards.git
+4. Install the required dependencies:   cd flash-cards npm install
+5. Start the development server:      npm start
+6. Open your browser and navigate to http://localhost:3000 to access the application.
+## Contributing
+Contributions to the Flashcards for Learning project are welcome! If you would like to contribute, please follow these guidelines:1. Fork the repository and create your own branch.2. Make your changes and test them thoroughly.3. Commit your changes with descriptive messages.4. Push your changes to your forked repository.5. Submit a pull request to the main repository.Please ensure that your contributions adhere to the Code of Conduct.
+## License
+This project is licensed under the MIT License.## ContactIf you have any questions or suggestions regarding the Flashcards for Learning project. 
+<p>Happy learning with Flashcards for Learning!</p>
